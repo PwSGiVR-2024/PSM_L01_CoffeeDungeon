@@ -78,7 +78,6 @@ public class EnemyAI : MonoBehaviour
     {
         while (true)
         {
-            print("patrol started");
             enemyNMeshAgent.SetDestination(RandomNavSphere(transform.position, enemyDistance, -1));
             yield return new WaitForSeconds(changeDirectionTime);
         }

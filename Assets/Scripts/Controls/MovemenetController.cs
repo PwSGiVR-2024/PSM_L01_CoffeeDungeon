@@ -1,5 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class MovemonetController : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class MovemonetController : MonoBehaviour
     [SerializeField] private float normalSpeed = 6;
     [SerializeField] private float sprintSpeed = 12;
     private Vector3 moveDirection;
-    [SerializeField] private InputActionReference movementAction;
+    [SerializeField] private InputActionReference movementsActions;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class MovemonetController : MonoBehaviour
 
     private void Update()
     {
-        moveDirection = movementAction.action.ReadValue<Vector3>();
+        moveDirection = movementsActions.action.ReadValue<Vector3>();
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift))
         {
             moveSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : normalSpeed;
@@ -28,6 +29,16 @@ public class MovemonetController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector3(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed, moveDirection.z * moveSpeed);
+        Vector3 velocity = new Vector3(moveDirection.x, 0, moveDirection.z) * moveSpeed;
+        rb.linearVelocity = velocity;
+
+        if (velocity != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(velocity);
+            Quaternion smoothedRotation = Quaternion.Slerp(transform.rotation, targetRotation, 10f * Time.fixedDeltaTime);
+            rb.MoveRotation(smoothedRotation);
+        }
     }
+
+
 }

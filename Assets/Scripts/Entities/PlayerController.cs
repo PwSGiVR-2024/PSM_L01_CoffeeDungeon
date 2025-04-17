@@ -32,7 +32,6 @@ public class PlayerController : EntityBaseClass
         if (other.CompareTag("FightArena"))
         {
             isFightEnabled = true;
-            print(isFightEnabled);
             foreach(GameObject wall in wallsToDisable)
             {
                 wall.SetActive(false);
@@ -44,7 +43,6 @@ public class PlayerController : EntityBaseClass
         if (other.CompareTag("FightArena"))
         {
             isFightEnabled = false;
-            print(isFightEnabled);
             foreach (GameObject wall in wallsToDisable)
             {
                 wall.SetActive(true);
