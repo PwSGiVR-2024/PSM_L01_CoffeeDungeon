@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : EntityBaseClass
@@ -5,6 +6,8 @@ public class PlayerController : EntityBaseClass
 
     private bool isFightEnabled=false;
     private GameObject[] wallsToDisable;
+
+   // public Action inEnemyRange;
 
     void Start()
     {
@@ -16,11 +19,11 @@ public class PlayerController : EntityBaseClass
         
     }
 
-    public override void DealDamage()
+    protected override void DealDamage()
     {
         
     }
-    public override void TakeDamage()
+    protected override void TakeDamage()
     {
 
     }

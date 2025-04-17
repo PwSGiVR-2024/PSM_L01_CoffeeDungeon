@@ -2,16 +2,17 @@ using UnityEngine;
 
 public abstract class EntityBaseClass : MonoBehaviour
 {
-    [SerializeField] public int minAttack;
-    [SerializeField] public int maxAttack;
-    [SerializeField] public int health;
-    [SerializeField] public int defence;
-    public abstract void DealDamage();
+    protected int minAttack;
+    protected int maxAttack;
+    protected int health;
+    protected int defence;
+    protected abstract void DealDamage();
 
-    public abstract void TakeDamage();
+    protected abstract void TakeDamage();
 
-    public virtual void Fallen()
+    protected virtual void Fallen()
     {
         print("");
     }
+
 }

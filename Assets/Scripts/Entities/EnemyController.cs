@@ -3,11 +3,11 @@ using UnityEngine;
 public class EnemyController : EntityBaseClass
 {
 
-    public override void DealDamage()
+    protected override void DealDamage()
     {
 
     }
-    public override void TakeDamage()
+    protected override void TakeDamage()
     {
 
     }
