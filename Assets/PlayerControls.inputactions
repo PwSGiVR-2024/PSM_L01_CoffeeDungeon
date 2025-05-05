@@ -6,15 +6,6 @@
             "id": "47f2ef49-0114-4d83-af31-6cd82e0f5157",
             "actions": [
                 {
-                    "name": "magic",
-                    "type": "Button",
-                    "id": "f50dc5ed-b846-4a85-9043-25eb5a3cf24e",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "move",
                     "type": "PassThrough",
                     "id": "d6781147-df93-497c-9a9c-ec0dcfa1958a",
@@ -40,20 +31,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "754b1454-5612-4117-b307-f4d76aec0a0f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "2ac80e0b-1386-4d00-a734-ac945c51b99b",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "magic",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "3D Vector",
                     "id": "206190f0-4dd8-4712-96dd-d4b85de3b925",
@@ -128,6 +117,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef03933c-ddc0-4d82-981c-571e4518a9e0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

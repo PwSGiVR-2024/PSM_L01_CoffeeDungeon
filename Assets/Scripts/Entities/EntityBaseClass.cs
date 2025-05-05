@@ -8,7 +8,9 @@ public abstract class EntityBaseClass : MonoBehaviour
     protected int defence;
     protected abstract void DealDamage();
 
-    protected abstract void TakeDamage();
+
+    //protected abstract void TakeDamage();
+
 
     protected virtual void Fallen()
     {
