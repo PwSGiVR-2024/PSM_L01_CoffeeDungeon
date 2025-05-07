@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 
-public class PlayerController : EntityBaseClass
+public class PlayerController : MonoBehaviour
 {
     private Transform weaponPoint;
     [SerializeField] private float attackRange = 1f;
+    private int health;
     private LayerMask enemyLayer;
 
 
@@ -16,9 +17,6 @@ public class PlayerController : EntityBaseClass
 
     private PlayerControls controls;
 
-    //public Action canBeAttacked;
-
-    // public Action inEnemyRange;
 
     void Start()
     {
@@ -42,7 +40,7 @@ public class PlayerController : EntityBaseClass
         };
     }
 
-    protected override void DealDamage()
+    private void DealDamage()
     {
         Debug.Log("Player attacked");
 
@@ -61,17 +59,6 @@ public class PlayerController : EntityBaseClass
         Gizmos.DrawWireSphere(weaponPoint.position, attackRange);
     }
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    if (weaponPoint == null) return;
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(weaponPoint.position, attackRange);
-    //}
-
-    //protected override void TakeDamage()
-    //{
-
-    //}
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("FightArena"))
@@ -113,7 +100,7 @@ public class PlayerController : EntityBaseClass
         }
     }
 
-    protected override void Fallen()
+    private void Fallen()
     {
         respawn=respawnPoint.transform.position;
         gameObject.transform.position = respawn;

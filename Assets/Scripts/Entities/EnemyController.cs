@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyController : EntityBaseClass
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float attackRate = 2f;
     private bool playerInRange = false;
@@ -16,16 +17,15 @@ public class EnemyController : EntityBaseClass
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered enemy range.");
             playerInRange = true;
-            if (attackCoroutine == null)
-                attackCoroutine = StartCoroutine(AttackPlayer());
+            attackCoroutine ??= StartCoroutine(AttackPlayer());
         }
     }
 
@@ -52,7 +52,7 @@ public class EnemyController : EntityBaseClass
         }
     }
 
-    protected override void DealDamage()
+    private void DealDamage()
     {
         if (player != null)
         {
@@ -60,4 +60,5 @@ public class EnemyController : EntityBaseClass
             playerController.TakeDamage();
         }
     }
+
 }
