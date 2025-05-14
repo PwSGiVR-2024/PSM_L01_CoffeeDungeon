@@ -1,0 +1,8 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "EnemyScriptableObject", menuName = "Scriptable Objects/EnemyData")]
+public class EnemyScriptableObject : ScriptableObject
+{
+    public string name;
+    public GameObject dropInGameModel;
+}

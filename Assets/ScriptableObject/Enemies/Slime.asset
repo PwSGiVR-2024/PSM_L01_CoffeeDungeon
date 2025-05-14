@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859d2978373369e42bbaf6c5f714da6e, type: 3}
+  m_Name: Slime
+  m_EditorClassIdentifier: 
+  name: Slime
+  dropInGameModel: {fileID: 9165980322892300393, guid: 0624c248133902b489f46eb551967dee, type: 3}

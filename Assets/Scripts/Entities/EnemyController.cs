@@ -1,64 +1,39 @@
-using System;
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float attackRate = 2f;
-    private bool playerInRange = false;
-    private GameObject player;
-    private PlayerController playerController;
-    //private PlayerController playerController;
+    public delegate void EnemyDeathDelegate();
 
-    private Coroutine attackCoroutine;
+    private EnemySpawner spawner;
+    //public event EnemyDeathDelegate OnEnemyDeath;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerController = player.GetComponent<PlayerController>();
-
+        spawner = GetComponent<EnemySpawner>();
     }
-
-    private void OnTriggerEnter(Collider other)
+    public void Die()
     {
-        if (other.CompareTag("Player"))
+        EnemyAI ai = GetComponent<EnemyAI>();
+        if (ai != null)
         {
-            playerInRange = true;
-            attackCoroutine ??= StartCoroutine(AttackPlayer());
+            ai.StopAI();
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        AttachedDataEnemy data = GetComponent<AttachedDataEnemy>();
+        if (data != null && data.enemyData != null && data.enemyData.dropInGameModel != null)
         {
-            Debug.Log("Player left enemy range.");
-            playerInRange = false;
-            if (attackCoroutine != null)
-            {
-                StopCoroutine(attackCoroutine);
-                attackCoroutine = null;
-            }
-        }
-    }
+            Vector3 dropPosition = GetComponent<NavMeshAgent>().nextPosition;
 
-    private IEnumerator AttackPlayer()
-    {
-        while (playerInRange)
-        {
-            DealDamage();
-            yield return new WaitForSeconds(attackRate);
+            Instantiate(
+                data.enemyData.dropInGameModel,
+                dropPosition + new Vector3(0, 0.5f, 0),
+                Quaternion.identity
+            );
         }
-    }
 
-    private void DealDamage()
-    {
-        if (player != null)
-        {
-            Debug.Log("Enemy attacks the player!");
-            playerController.TakeDamage();
-        }
+        Destroy(gameObject);
+        spawner.currentEnemyCount--;
     }
-
+   
 }

@@ -9,6 +9,8 @@ TagManager:
   - BackWalls
   - Weapon
   - EnemyAttackRange
+  - MonsterDrop
+  - MonsterSpawnPoint
   layers:
   - Default
   - TransparentFX

@@ -1,11 +1,12 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private Transform weaponPoint;
     [SerializeField] private float attackRange = 1f;
-    private int health;
+    private int health = 5;
     private LayerMask enemyLayer;
 
 
@@ -16,18 +17,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 respawn;
 
     private PlayerControls controls;
-
-
     void Start()
     {
         wallsToDisable = GameObject.FindGameObjectsWithTag("BackWalls");
         enemyLayer = LayerMask.GetMask("EnemyLayer");
         weaponPoint = GameObject.Find("swordTip").transform;
         respawnPoint = GameObject.FindGameObjectWithTag("Respawn");
-
-
-        health = 5;
-
 
         controls = new PlayerControls();
         controls.Enable();
@@ -42,13 +37,20 @@ public class PlayerController : MonoBehaviour
 
     private void DealDamage()
     {
-        Debug.Log("Player attacked");
 
         Collider[] hitEnemies = Physics.OverlapSphere(weaponPoint.position, attackRange, enemyLayer);
 
-        foreach (Collider enemy in hitEnemies)
+        if (hitEnemies.Length > 0)
         {
-            Destroy(enemy.gameObject);
+            Collider closestEnemy = hitEnemies
+                .OrderBy(e => Vector3.Distance(e.transform.position, weaponPoint.position))
+                .First();
+
+            EnemyController ec = closestEnemy.GetComponent<EnemyController>();
+            if (ec != null)
+            {
+                ec.Die();
+            }
         }
     }
 
@@ -91,7 +93,6 @@ public class PlayerController : MonoBehaviour
         if (health > 0)
         {
             health -= 1;
-            print(health);
         }
 
         if (health == 0)

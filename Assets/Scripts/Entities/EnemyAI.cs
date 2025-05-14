@@ -82,4 +82,22 @@ public class EnemyAI : MonoBehaviour
             yield return new WaitForSeconds(changeDirectionTime);
         }
     }
+    public void StopAI()
+    {
+        isHostile = false;
+
+        if (patrolRoutine != null)
+        {
+            StopCoroutine(patrolRoutine);
+            patrolRoutine = null;
+        }
+
+        if (enemyNMeshAgent != null && enemyNMeshAgent.enabled)
+        {
+            enemyNMeshAgent.isStopped = true;
+            enemyNMeshAgent.ResetPath();
+        }
+
+        enabled = false;
+    }
 }
