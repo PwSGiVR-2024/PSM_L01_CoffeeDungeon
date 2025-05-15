@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e3348fbe16bd64b86fd22c72f2c94e, type: 3}
+  m_Name: ApplePie
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 505634430451664136, guid: f1bf3f5b1df85e64988f6c7283b489a6, type: 3}
+  inGameObject: {fileID: 8776656009104143004, guid: d7cc62f673d8dd849b59867a8c30546c, type: 3}
+  itemName: Apple Pie
+  itemType: 0
+  isCraftable: 1

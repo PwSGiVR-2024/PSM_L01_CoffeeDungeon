@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 
     private GameObject spawner;
     private EnemySpawner spawnerComponent;
+    
 
     private void Start()
     {
@@ -23,12 +24,12 @@ public class EnemyController : MonoBehaviour
         }
 
         AttachedDataEnemy data = GetComponent<AttachedDataEnemy>();
-        if (data != null && data.enemyData != null && data.enemyData.dropInGameModel != null)
+        if (data != null && data.enemyData != null && data.enemyData.dropPrefab != null)
         {
             Vector3 dropPosition = GetComponent<NavMeshAgent>().nextPosition;
 
             Instantiate(
-                data.enemyData.dropInGameModel,
+                data.enemyData.dropPrefab,
                 dropPosition + new Vector3(0, 0.5f, 0),
                 Quaternion.identity
             );

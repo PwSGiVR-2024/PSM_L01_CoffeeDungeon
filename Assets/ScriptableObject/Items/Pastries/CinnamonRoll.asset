@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e3348fbe16bd64b86fd22c72f2c94e, type: 3}
+  m_Name: CinnamonRoll
+  m_EditorClassIdentifier: 
+  iconPrefab: {fileID: 505634430451664136, guid: b52583d2bec180e48b575da2f2149726, type: 3}
+  inGameObject: {fileID: 118155509110143473, guid: 521dca5e4f02f5042b0bcf73c798e832, type: 3}
+  itemName: CinnamonRoll
+  itemType: 0
+  isCraftable: 1

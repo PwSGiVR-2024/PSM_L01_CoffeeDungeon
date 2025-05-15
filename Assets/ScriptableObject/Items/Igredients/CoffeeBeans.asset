@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 859d2978373369e42bbaf6c5f714da6e, type: 3}
-  m_Name: Slime
+  m_Script: {fileID: 11500000, guid: 9f180e0c3776d1c4087a5c2e6a82acfd, type: 3}
+  m_Name: CoffeeBeans
   m_EditorClassIdentifier: 
-  name: Slime
-  dropPrefab: {fileID: 505634430451664136, guid: 288a4969cc96b5246bc560f57f15fb15, type: 3}
+  name: Coffee Beans
+  iconPrefab: {fileID: 21300000, guid: 7d58fd33da0c1714e83ed3c55ae05bb9, type: 3}

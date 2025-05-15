@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 859d2978373369e42bbaf6c5f714da6e, type: 3}
-  m_Name: Slime
+  m_Script: {fileID: 11500000, guid: 99ab5b4e77febf847997ed15767cb8ac, type: 3}
+  m_Name: TeaRecipe
   m_EditorClassIdentifier: 
-  name: Slime
-  dropPrefab: {fileID: 505634430451664136, guid: 288a4969cc96b5246bc560f57f15fb15, type: 3}
+  ingredientsList:
+  - {fileID: 11400000, guid: da4f11671f032aa40b38ae8ce8a25702, type: 2}
+  - {fileID: 11400000, guid: 84183d77863018f499f9b210552247aa, type: 2}

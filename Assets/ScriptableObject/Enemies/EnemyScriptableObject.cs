@@ -4,5 +4,5 @@ using UnityEngine;
 public class EnemyScriptableObject : ScriptableObject
 {
     public string name;
-    public GameObject dropInGameModel;
+    public GameObject dropPrefab;
 }

@@ -11,6 +11,7 @@ TagManager:
   - EnemyAttackRange
   - MonsterDrop
   - MonsterSpawnPoint
+  - SpawnPointHoldItem
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private GameObject playerWeapon;
     private GameObject respawnPoint;
     private Vector3 respawn;
+    private GameObject tray;
 
     private PlayerControls controls;
     void Start()
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
         enemyLayer = LayerMask.GetMask("EnemyLayer");
         weaponPoint = GameObject.Find("swordTip").transform;
         respawnPoint = GameObject.FindGameObjectWithTag("Respawn");
+        tray = GameObject.Find("Tray");
 
         controls = new PlayerControls();
         controls.Enable();
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
                 wall.SetActive(false);
             }
             playerWeapon.SetActive(true);
+            tray.SetActive(false);
         }
 
     }
@@ -84,6 +87,7 @@ public class PlayerController : MonoBehaviour
                 wall.SetActive(true);
             }
             playerWeapon.SetActive(false);
+            tray.SetActive(true);
             health = 5;
         }
     }
