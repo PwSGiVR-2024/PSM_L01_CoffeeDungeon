@@ -5,12 +5,14 @@ public class EnemyController : MonoBehaviour
 {
     public delegate void EnemyDeathDelegate();
 
-    private EnemySpawner spawner;
-    //public event EnemyDeathDelegate OnEnemyDeath;
+
+    private GameObject spawner;
+    private EnemySpawner spawnerComponent;
 
     private void Start()
     {
-        spawner = GetComponent<EnemySpawner>();
+        spawner = GameObject.Find("EnemySpawner");
+        spawnerComponent = spawner.GetComponent<EnemySpawner>();
     }
     public void Die()
     {
@@ -33,7 +35,7 @@ public class EnemyController : MonoBehaviour
         }
 
         Destroy(gameObject);
-        spawner.currentEnemyCount--;
+        spawnerComponent.currentEnemyCount-=1;
     }
    
 }
