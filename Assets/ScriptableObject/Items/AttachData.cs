@@ -3,6 +3,6 @@ using UnityEngine;
 public class AttachData : MonoBehaviour
 {
 
-    [SerializeField] ItemData attachedData;
+    [SerializeField] public ItemData attachedData;
 
 }

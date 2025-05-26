@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4777916429915551479}
   - component: {fileID: 6984302310091354247}
   - component: {fileID: 7105062068615887652}
-  - component: {fileID: -7384224759241916529}
-  m_Layer: 0
+  - component: {fileID: 4866296220743886234}
+  m_Layer: 8
   m_Name: SlimeDrop
   m_TagString: MonsterDrop
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
---- !u!114 &-7384224759241916529
+--- !u!114 &4866296220743886234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,4 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995445b36df51134583a5580dcb3d64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachedData: {fileID: 0}
+  attachedData: {fileID: 11400000, guid: 954e3bdcceaad6b43bfbea145b14b407, type: 2}

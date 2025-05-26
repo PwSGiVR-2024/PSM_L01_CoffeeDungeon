@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 4777916429915551479}
   - component: {fileID: 6984302310091354247}
   - component: {fileID: 7105062068615887652}
-  m_Layer: 0
+  - component: {fileID: 3810642926042184260}
+  - component: {fileID: -4992752862445147448}
+  m_Layer: 8
   m_Name: SlimeDropInGame
   m_TagString: MonsterDrop
   m_Icon: {fileID: 0}
@@ -126,3 +128,37 @@ Animation:
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0
+--- !u!65 &3810642926042184260
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165980322892300393}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4992752862445147448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165980322892300393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995445b36df51134583a5580dcb3d64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedData: {fileID: 11400000, guid: 954e3bdcceaad6b43bfbea145b14b407, type: 2}
