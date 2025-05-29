@@ -63,9 +63,9 @@ public class InventoryInputHandler : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnApplicationQuit()
     {
-
+        inventory.container.Clear();
     }
 }
 
