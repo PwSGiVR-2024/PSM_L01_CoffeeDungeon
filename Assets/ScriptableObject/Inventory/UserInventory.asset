@@ -13,4 +13,34 @@ MonoBehaviour:
   m_Name: UserInventory
   m_EditorClassIdentifier: 
   inventoryCapacity: 20
-  container: []
+  container:
+  - item: {fileID: 11400000, guid: d57d9e1f3e52d244693c09e6657e044c, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 7fc47a261cca81c449fdc8f9c3672d24, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: 954e3bdcceaad6b43bfbea145b14b407, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 954e3bdcceaad6b43bfbea145b14b407, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 954e3bdcceaad6b43bfbea145b14b407, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 954e3bdcceaad6b43bfbea145b14b407, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 954e3bdcceaad6b43bfbea145b14b407, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 954e3bdcceaad6b43bfbea145b14b407, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 9e77891b820a37d44bfceec61b5a713a, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 9e77891b820a37d44bfceec61b5a713a, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 9e77891b820a37d44bfceec61b5a713a, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 9e77891b820a37d44bfceec61b5a713a, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 9e77891b820a37d44bfceec61b5a713a, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 9e77891b820a37d44bfceec61b5a713a, type: 2}
+    amount: 50
+  - item: {fileID: 11400000, guid: 9e77891b820a37d44bfceec61b5a713a, type: 2}
+    amount: 50

@@ -9,6 +9,7 @@ public class Inventory : ScriptableObject
     public int inventoryCapacity = 99;
     public List<InventorySlot> container = new List<InventorySlot>();
 
+    public System.Action OnInventoryChanged;
     public void AddItem(ItemData item, int amount)
     {
         foreach (InventorySlot slot in container)
@@ -29,7 +30,9 @@ public class Inventory : ScriptableObject
         {
             Debug.LogWarning("Inventory is full! Cannot add item: " + item.name);
         }
-       
+
+        OnInventoryChanged?.Invoke();
+
     }
 
 }

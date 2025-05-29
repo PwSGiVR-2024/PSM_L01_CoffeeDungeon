@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     private GameObject tray;
 
     private PlayerControls controls;
+
+    private bool isInventoryOpen = false;
+    [SerializeField]private GameObject inventoryUI;
     void Start()
     {
         wallsToDisable = GameObject.FindGameObjectsWithTag("BackWalls");
@@ -33,6 +36,22 @@ public class PlayerController : MonoBehaviour
             if (isFightEnabled)
             {
                 DealDamage();
+            }
+        };
+        controls.Gameplay.OpenInventory.performed += ctx =>
+        {
+           
+            if (!isInventoryOpen)
+            {
+                inventoryUI.SetActive(true);
+                Time.timeScale = 0f;
+                isInventoryOpen = true;
+            }
+            else
+            {
+                inventoryUI.SetActive(false);
+                Time.timeScale = 1f;
+                isInventoryOpen = false;
             }
         };
     }

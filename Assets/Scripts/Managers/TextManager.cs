@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class TextManager : MonoBehaviour
 {
-    public TextManager instance { get; private set; }
+    public TextManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (instance != null & instance != this) {
+        if (Instance != null & Instance != this) {
         Destroy(this);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 

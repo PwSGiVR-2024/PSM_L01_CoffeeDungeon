@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e3348fbe16bd64b86fd22c72f2c94e, type: 3}
   m_Name: SlimeDrop
   m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 505634430451664136, guid: 288a4969cc96b5246bc560f57f15fb15, type: 3}
+  iconPrefab: {fileID: 21300000, guid: f65023889763c7644b5579f0b019da6b, type: 3}
   inGameObject: {fileID: 9165980322892300393, guid: 0624c248133902b489f46eb551967dee, type: 3}
   itemName: Slime Drop
   itemType: 2
