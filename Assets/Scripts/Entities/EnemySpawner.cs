@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     private Transform[] spawnPointsLocation;
 
     [SerializeField] private float spawnInterval = 5f;
-    private int maxEnemies = 10;
+    private readonly int maxEnemies = 10;
     public int currentEnemyCount = 0;
 
     private GameObject player;

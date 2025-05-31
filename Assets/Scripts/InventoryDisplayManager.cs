@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryDisplayManager : MonoBehaviour
 {
@@ -46,6 +48,7 @@ public class InventoryDisplayManager : MonoBehaviour
             slots.Add(slotGo);
         }
     }
+
     private void OnEnable()
     {
         inventory.OnInventoryChanged += DrawInventory;

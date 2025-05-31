@@ -67,8 +67,7 @@ public class PlayerController : MonoBehaviour
                 .OrderBy(e => Vector3.Distance(e.transform.position, weaponPoint.position))
                 .First();
 
-            EnemyController ec = closestEnemy.GetComponent<EnemyController>();
-            if (ec != null)
+            if (closestEnemy.TryGetComponent<EnemyController>(out var ec))
             {
                 ec.Die();
             }

@@ -17,8 +17,7 @@ public class EnemyController : MonoBehaviour
     }
     public void Die()
     {
-        EnemyAI ai = GetComponent<EnemyAI>();
-        if (ai != null)
+        if (TryGetComponent<EnemyAI>(out var ai))
         {
             ai.StopAI();
         }

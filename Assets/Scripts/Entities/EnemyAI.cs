@@ -16,9 +16,8 @@ public class EnemyAI : MonoBehaviour
     
     private void Start()
     {
-        enemyNMeshAgent = GetComponent<NavMeshAgent>();
-
-        if(enemyNMeshAgent == null)
+        
+        if(!TryGetComponent<NavMeshAgent>(out enemyNMeshAgent))
         {
             print("no navmesh agent found");
         }

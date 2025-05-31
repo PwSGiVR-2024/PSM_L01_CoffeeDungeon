@@ -9,9 +9,9 @@ using static UnityEditor.Progress;
 public class Inventory : ScriptableObject
 {
     public int inventoryCapacity = 99;
-    public List<InventorySlot> slots = new List<InventorySlot>();
+    public List<InventorySlot> slots = new();
 
-    public System.Action OnInventoryChanged;
+    public event Action OnInventoryChanged;
     public event Action AmountChanged;
     public void AddItem(ItemData item, int amount)
     {

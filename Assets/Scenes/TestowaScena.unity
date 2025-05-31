@@ -2016,8 +2016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233faad6b3287bd4a975d890ea3bdfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedTrashcan: {fileID: -1665720097, guid: de18fc00386a1684482382d993ae4c80, type: 3}
-  openTrashcan: {fileID: -915723637, guid: de18fc00386a1684482382d993ae4c80, type: 3}
+  closed: {fileID: -1665720097, guid: de18fc00386a1684482382d993ae4c80, type: 3}
+  open: {fileID: -915723637, guid: de18fc00386a1684482382d993ae4c80, type: 3}
 --- !u!1001 &456788231
 PrefabInstance:
   m_ObjectHideFlags: 0
