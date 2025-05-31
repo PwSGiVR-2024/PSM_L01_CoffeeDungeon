@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 1182662056011168601}
   - component: {fileID: 5471868957552204123}
   - component: {fileID: 4227452800357387756}
+  - component: {fileID: 110870403992867571}
   m_Layer: 5
   m_Name: ItemSlotPrefab
   m_TagString: Untagged
@@ -305,3 +306,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 7438864887708854567}
   amountText: {fileID: 260867662704447055}
+  assignedSlot:
+    item: {fileID: 0}
+    amount: 0
+  slotIndex: 0
+  inventoryReference: {fileID: 11400000, guid: 801d55b8d1039704aab1679f7bc53798, type: 2}
+--- !u!225 &110870403992867571
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8471420666542535018}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

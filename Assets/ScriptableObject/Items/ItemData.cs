@@ -9,6 +9,7 @@ public enum ItemType
 [CreateAssetMenu(fileName = "MonsterDrop", menuName = "Scriptable Objects/Items")]
 public class ItemData : ScriptableObject
 {
+    public int id;
     public Sprite iconPrefab;
     public GameObject inGameObject;
     public string itemName;

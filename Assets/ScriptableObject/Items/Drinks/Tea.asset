@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e3348fbe16bd64b86fd22c72f2c94e, type: 3}
   m_Name: Tea
   m_EditorClassIdentifier: 
+  id: 2
   iconPrefab: {fileID: 21300000, guid: d0c05b9125ed56349a5385e1a77547b7, type: 3}
   inGameObject: {fileID: 2230582867971379617, guid: 025dfb19e92ee2543866a863ca173eae, type: 3}
   itemName: Tea

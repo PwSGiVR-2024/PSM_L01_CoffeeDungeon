@@ -8,7 +8,7 @@ public class InventoryDisplayManager : MonoBehaviour
     [SerializeField]private Transform slotContainer;
     [SerializeField]private GameObject slotPrefab;
 
-    private List<GameObject> slots = new List<GameObject>();
+    private readonly List<GameObject> slots = new();
     private void Awake()
     {
         if (Instance != null & Instance != this)
@@ -34,12 +34,15 @@ public class InventoryDisplayManager : MonoBehaviour
         }
         slots.Clear();
 
-
-        foreach(var slot in inventory.container)
+        for (int i = 0; i < inventory.slots.Count; i++)
         {
-            GameObject slotGo = Instantiate(slotPrefab,slotContainer);
+            GameObject slotGo = Instantiate(slotPrefab, slotContainer);
             InventorySlotUI slotUI = slotGo.GetComponent<InventorySlotUI>();
-            slotUI.Setup(slot);
+
+            slotUI.slotIndex = i;
+            slotUI.inventoryReference = inventory;
+            slotUI.Setup(inventory.slots[i]);
+
             slots.Add(slotGo);
         }
     }
