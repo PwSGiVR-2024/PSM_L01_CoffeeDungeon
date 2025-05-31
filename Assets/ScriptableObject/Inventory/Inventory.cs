@@ -12,6 +12,7 @@ public class Inventory : ScriptableObject
     public List<InventorySlot> slots = new List<InventorySlot>();
 
     public System.Action OnInventoryChanged;
+    public event Action AmountChanged;
     public void AddItem(ItemData item, int amount)
     {
         foreach (InventorySlot slot in slots)
@@ -19,6 +20,7 @@ public class Inventory : ScriptableObject
             if (slot.item == item)
             {
                 slot.AddAmount(amount);
+                AmountChanged?.Invoke();
                 return;
             }
         }

@@ -21,7 +21,7 @@ public class TrashcanUI : MonoBehaviour, IDropHandler
 
         if (draggedSlotUI.assignedSlot != null)
         {
-            draggedSlotUI.inventoryReference.RemoveSlot(draggedSlotUI.slotIndex);
+            draggedSlotUI.inventory.RemoveSlot(draggedSlotUI.slotIndex);
             StartCoroutine(WaitForIconChange());
         }
         draggedSlotUI.Setup(null);

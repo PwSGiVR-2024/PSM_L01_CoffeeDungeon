@@ -40,7 +40,7 @@ public class InventoryDisplayManager : MonoBehaviour
             InventorySlotUI slotUI = slotGo.GetComponent<InventorySlotUI>();
 
             slotUI.slotIndex = i;
-            slotUI.inventoryReference = inventory;
+            slotUI.inventory = inventory;
             slotUI.Setup(inventory.slots[i]);
 
             slots.Add(slotGo);

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public InventorySlot assignedSlot;
 
     public int slotIndex;
-    [SerializeField]public Inventory inventoryReference; 
+    [SerializeField]public Inventory inventory; 
 
     private Transform ogParent;
     private CanvasGroup canvasGroup;
@@ -26,6 +27,10 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private void Start()
     {
         inventoryUI = GameObject.Find("InventoryUI");
+        if (inventory != null)
+        {
+            inventory.AmountChanged += UpdateAmount;
+        }
     }
 
     public void Setup(InventorySlot slot)
@@ -84,14 +89,14 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         InventorySlotUI draggedSlotUI = eventData.pointerDrag?.GetComponent<InventorySlotUI>();
         if (draggedSlotUI == null || draggedSlotUI == this) return;
 
-        if (draggedSlotUI.inventoryReference != null && inventoryReference != null)
+        if (draggedSlotUI.inventory != null && inventory != null)
         {
-            InventorySlot tempSlot = inventoryReference.slots[slotIndex];
-            inventoryReference.slots[slotIndex] = draggedSlotUI.inventoryReference.slots[draggedSlotUI.slotIndex];
-            draggedSlotUI.inventoryReference.slots[draggedSlotUI.slotIndex] = tempSlot;
+            InventorySlot tempSlot = inventory.slots[slotIndex];
+            inventory.slots[slotIndex] = draggedSlotUI.inventory.slots[draggedSlotUI.slotIndex];
+            draggedSlotUI.inventory.slots[draggedSlotUI.slotIndex] = tempSlot;
 
-            Setup(inventoryReference.slots[slotIndex]);
-            draggedSlotUI.Setup(draggedSlotUI.inventoryReference.slots[draggedSlotUI.slotIndex]);
+            Setup(inventory.slots[slotIndex]);
+            draggedSlotUI.Setup(draggedSlotUI.inventory.slots[draggedSlotUI.slotIndex]);
         }
         else
         {
@@ -103,4 +108,15 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             draggedSlotUI.Setup(draggedSlotUI.assignedSlot);
         }
     }
+
+    private void UpdateAmount()
+    {
+        amountText.text = assignedSlot.amount.ToString();
+    }
+    private void OnDestroy()
+    {
+        if (inventory != null)
+            inventory.AmountChanged -= UpdateAmount;
+    }
+
 }
