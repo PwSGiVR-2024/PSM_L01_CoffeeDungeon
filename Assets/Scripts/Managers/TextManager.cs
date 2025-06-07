@@ -1,12 +1,22 @@
+using TMPro;
 using UnityEngine;
 
 public class TextManager : MonoBehaviour
 {
-    public TextManager Instance { get; private set; }
+    public static TextManager Instance { get; private set; }
 
+    private InventoryInputHandler inventoryInputHandler;
+    [SerializeField] private GameObject communicatUI;
+    private TMP_Text communicatText;
     private void Awake()
     {
-        if (Instance != null & Instance != this) {
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
+        {
+            inventoryInputHandler = player.GetComponent<InventoryInputHandler>();
+        }
+
+        if (Instance != null && Instance != this) {
         Destroy(this);
         }
         else
@@ -14,7 +24,30 @@ public class TextManager : MonoBehaviour
             Instance = this;
         }
     }
+    private void Start()
+    {
+        communicatText = communicatUI.GetComponent<TMP_Text>();
+    }
 
+    private void OnEnable()
+    {
+        inventoryInputHandler.InItemTrigger += ShowCommunicatText;
+        inventoryInputHandler.LeaveItemTrigger += ResetCommunicatText;
+    }
+    private void OnDisable()
+    {
+        inventoryInputHandler.InItemTrigger -= ShowCommunicatText;
+        inventoryInputHandler.LeaveItemTrigger -= ResetCommunicatText;
+    }
 
+    private void ShowCommunicatText()
+    {
+        communicatText.text = "Pick Up Item: F";
+    }
+    
+    private void ResetCommunicatText()
+    {
+        communicatText.text = "";
+    }
 
 }

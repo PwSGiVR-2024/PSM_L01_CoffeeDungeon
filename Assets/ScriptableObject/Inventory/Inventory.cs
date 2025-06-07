@@ -47,6 +47,41 @@ public class Inventory : ScriptableObject
         }
     }
 
+    public void RemoveItem(ItemData item, int amount)
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].item == item)
+            {
+                if (slots[i].amount > amount)
+                {
+                    slots[i].amount -= amount;
+                    AmountChanged?.Invoke();
+                    return;
+                }
+                else
+                {
+                    amount -= slots[i].amount;
+                    slots.RemoveAt(i);
+                    OnInventoryChanged?.Invoke();
+                    AmountChanged?.Invoke();
+                    return;
+                }
+            }
+        }
+
+        Debug.LogWarning($"Tried to remove {amount} of {item.name}, but it wasn't found in inventory.");
+    }
+
+    public bool HasItem(ItemData item, int requiredAmount)
+    {
+        foreach (InventorySlot slot in slots)
+        {
+            if (slot.item == item && slot.amount >= requiredAmount)
+                return true;
+        }
+        return false;
+    }
 }
 
 

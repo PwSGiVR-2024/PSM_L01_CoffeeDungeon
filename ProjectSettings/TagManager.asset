@@ -12,6 +12,8 @@ TagManager:
   - MonsterDrop
   - MonsterSpawnPoint
   - SpawnPointHoldItem
+  - Crafting
+  - FridgeChest
   layers:
   - Default
   - TransparentFX

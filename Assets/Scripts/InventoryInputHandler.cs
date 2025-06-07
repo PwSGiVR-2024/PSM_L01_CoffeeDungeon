@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Progress;
@@ -12,6 +13,9 @@ public class InventoryInputHandler : MonoBehaviour
 
     private GameObject currentItemObject;
     private ItemData currentItemData;
+
+    public event Action InItemTrigger;
+    public event Action LeaveItemTrigger;
 
     private void OnEnable()
     {
@@ -35,6 +39,7 @@ public class InventoryInputHandler : MonoBehaviour
             currentItemObject = null;
             currentItemData = null;
             itemInPlayerRange = false;
+            LeaveItemTrigger?.Invoke();
         }
 
     }
@@ -49,6 +54,7 @@ public class InventoryInputHandler : MonoBehaviour
                 itemInPlayerRange = true;
                 currentItemObject = other.gameObject;
                 currentItemData = itemComponent.attachedData;
+                InItemTrigger?.Invoke();
             }
         }
     }
@@ -60,6 +66,7 @@ public class InventoryInputHandler : MonoBehaviour
             itemInPlayerRange = false;
             currentItemObject = null;
             currentItemData = null;
+            LeaveItemTrigger?.Invoke();
         }
     }
 

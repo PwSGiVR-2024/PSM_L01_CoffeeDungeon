@@ -13,7 +13,7 @@ public class InventoryDisplayManager : MonoBehaviour
     private readonly List<GameObject> slots = new();
     private void Awake()
     {
-        if (Instance != null & Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }

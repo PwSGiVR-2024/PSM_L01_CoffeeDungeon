@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f180e0c3776d1c4087a5c2e6a82acfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 69e3348fbe16bd64b86fd22c72f2c94e, type: 3}
   m_Name: CoffeeBeans
   m_EditorClassIdentifier: 
-  name: Coffee Beans
   iconPrefab: {fileID: 21300000, guid: 7d58fd33da0c1714e83ed3c55ae05bb9, type: 3}
+  inGameObject: {fileID: 0}
+  itemName: CoffeeBeans
+  itemType: 3
+  isCraftable: 0

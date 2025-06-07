@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private PlayerControls controls;
 
     private bool isInventoryOpen = false;
+
     [SerializeField]private GameObject inventoryUI;
     void Start()
     {
