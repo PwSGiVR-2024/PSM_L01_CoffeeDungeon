@@ -144,6 +144,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CraftingMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""98bdc56e-cd5a-4774-908e-eab804d2ee91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -256,6 +265,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""OpenInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09ed43a3-8d18-433a-9736-2d4a6fca5f9d"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CraftingMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -287,6 +307,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_PickUpItem = m_Gameplay.FindAction("PickUpItem", throwIfNotFound: true);
         m_Gameplay_OpenInventory = m_Gameplay.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Gameplay_CraftingMenu = m_Gameplay.FindAction("CraftingMenu", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -373,6 +394,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_PickUpItem;
     private readonly InputAction m_Gameplay_OpenInventory;
+    private readonly InputAction m_Gameplay_CraftingMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -408,6 +430,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/OpenInventory".
         /// </summary>
         public InputAction @OpenInventory => m_Wrapper.m_Gameplay_OpenInventory;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/CraftingMenu".
+        /// </summary>
+        public InputAction @CraftingMenu => m_Wrapper.m_Gameplay_CraftingMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -452,6 +478,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @OpenInventory.started += instance.OnOpenInventory;
             @OpenInventory.performed += instance.OnOpenInventory;
             @OpenInventory.canceled += instance.OnOpenInventory;
+            @CraftingMenu.started += instance.OnCraftingMenu;
+            @CraftingMenu.performed += instance.OnCraftingMenu;
+            @CraftingMenu.canceled += instance.OnCraftingMenu;
         }
 
         /// <summary>
@@ -481,6 +510,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @OpenInventory.started -= instance.OnOpenInventory;
             @OpenInventory.performed -= instance.OnOpenInventory;
             @OpenInventory.canceled -= instance.OnOpenInventory;
+            @CraftingMenu.started -= instance.OnCraftingMenu;
+            @CraftingMenu.performed -= instance.OnCraftingMenu;
+            @CraftingMenu.canceled -= instance.OnCraftingMenu;
         }
 
         /// <summary>
@@ -576,5 +608,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpenInventory(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CraftingMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCraftingMenu(InputAction.CallbackContext context);
     }
 }

@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isFightEnabled=false;
     private GameObject[] wallsToDisable;
-    [SerializeField]private GameObject playerWeapon;
+    [SerializeField] private GameObject playerWeapon;
     private GameObject respawnPoint;
     private Vector3 respawn;
     private GameObject tray;
@@ -20,8 +20,10 @@ public class PlayerController : MonoBehaviour
     private PlayerControls controls;
 
     private bool isInventoryOpen = false;
+    private bool isCraftingOpen = false;
 
-    [SerializeField]private GameObject inventoryUI;
+    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private GameObject craftingUI;
     void Start()
     {
         wallsToDisable = GameObject.FindGameObjectsWithTag("BackWalls");
@@ -53,6 +55,22 @@ public class PlayerController : MonoBehaviour
                 inventoryUI.SetActive(false);
                 Time.timeScale = 1f;
                 isInventoryOpen = false;
+            }
+        };
+
+        controls.Gameplay.CraftingMenu.performed += ctx =>
+        {
+            if (!isCraftingOpen)
+            {
+                craftingUI.SetActive(true);
+                Time.timeScale = 0f;
+                isCraftingOpen = true;
+            }
+            else
+            {
+                craftingUI.SetActive(false);
+                Time.timeScale = 1f;
+                isCraftingOpen = false;
             }
         };
     }

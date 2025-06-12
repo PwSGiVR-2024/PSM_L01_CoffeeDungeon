@@ -2,7 +2,20 @@ using UnityEngine;
 
 public class CraftingManager : MonoBehaviour
 {
+    public static CraftingManager Instance { get; private set; }
     public Inventory inventory;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     public bool CanCraft(CraftingRecipe recipe)
     {

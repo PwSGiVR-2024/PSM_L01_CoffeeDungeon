@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryDisplayManager : MonoBehaviour
 {
-    public InventoryDisplayManager Instance { get; private set; }
+    public static InventoryDisplayManager Instance { get; private set; }
     [SerializeField]private Inventory inventory;
     [SerializeField]private Transform slotContainer;
     [SerializeField]private GameObject slotPrefab;
