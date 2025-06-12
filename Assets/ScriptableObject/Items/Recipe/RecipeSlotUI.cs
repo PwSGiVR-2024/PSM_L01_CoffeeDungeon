@@ -9,8 +9,9 @@ public class RecipeSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] private Image iconImage;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private GameObject ingredientList;
+    [SerializeField] private Transform content;
     [SerializeField] private GameObject ingredientRowPrefab;
-    
+    [SerializeField] private Button craftButton;
 
     private CraftingRecipe recipe;
 
@@ -20,20 +21,33 @@ public class RecipeSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
         iconImage.sprite = recipe.result.iconPrefab;
         nameText.text = recipe.result.itemName;
+
+        if (craftButton != null)
+        {
+            craftButton.onClick.RemoveAllListeners();
+            craftButton.onClick.AddListener(OnCraftButtonClicked);
+
+            craftButton.interactable = CraftingManager.Instance.CanCraft(recipe);
+        }
     }
 
+    private void OnCraftButtonClicked()
+    {
+        if (CraftingManager.Instance != null && recipe != null)
+        {
+            CraftingManager.Instance.Craft(recipe);
+        }
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         ingredientList.SetActive(true);
-        print("hover");
         LoadIngredientsList();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ingredientList.SetActive(false);
-        print("no hover");
         ClearIngredientsList();
     }
 
@@ -42,10 +56,9 @@ public class RecipeSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         print("method activated");
         foreach (var ingredient in recipe.ingredients)
         {
-            GameObject row = Instantiate(ingredientRowPrefab, ingredientList.transform);
+            GameObject row = Instantiate(ingredientRowPrefab, content);
 
-            TMP_Text rowText = row.GetComponentInChildren<TMP_Text>();
-            if (rowText != null)
+            if (row.TryGetComponent<TMP_Text>(out var rowText))
             {
                 rowText.text = $"{ingredient.item.itemName} x{ingredient.quantity}";
             }
@@ -53,16 +66,14 @@ public class RecipeSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             {
                 Debug.LogWarning("TMP_Text component not found in ingredientRowPrefab.");
             }
-            rowText.text = $"{ingredient.item.itemName} x{ingredient.quantity}";
         }
     }
 
     private void ClearIngredientsList()
     {
-        foreach (Transform child in ingredientList.transform)
+        foreach (Transform child in content)
         {
             Destroy(child.gameObject);
-            print("cleared ingredients");
         }
     }
 }

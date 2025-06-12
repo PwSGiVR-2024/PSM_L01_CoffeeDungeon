@@ -13,4 +13,16 @@ MonoBehaviour:
   m_Name: UserInventory
   m_EditorClassIdentifier: 
   inventoryCapacity: 20
-  slots: []
+  slots:
+  - item: {fileID: 11400000, guid: 76dbfe64faf35d24490bfaae93f81ba8, type: 2}
+    amount: 99
+  - item: {fileID: 11400000, guid: 99c9f149e04aae4439d54067cdb4bc85, type: 2}
+    amount: 99
+  - item: {fileID: 11400000, guid: ecfe261831e407641b188621ea6ef6a2, type: 2}
+    amount: 99
+  - item: {fileID: 11400000, guid: 3e85cee936c7f724599245f243bcb2a2, type: 2}
+    amount: 99
+  - item: {fileID: 11400000, guid: 84183d77863018f499f9b210552247aa, type: 2}
+    amount: 99
+  - item: {fileID: 11400000, guid: da4f11671f032aa40b38ae8ce8a25702, type: 2}
+    amount: 99

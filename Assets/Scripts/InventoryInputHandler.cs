@@ -70,9 +70,9 @@ public class InventoryInputHandler : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
-    {
-        inventory.slots.Clear();
-    }
+    //private void OnApplicationQuit()
+    //{
+    //    inventory.slots.Clear();
+    //}
 }
 

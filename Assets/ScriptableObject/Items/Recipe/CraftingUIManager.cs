@@ -5,8 +5,7 @@ public class CraftingUIManager : MonoBehaviour
     [SerializeField] private GameObject canCraftSlot;
     [SerializeField] private GameObject missingIngredientsSlot;
     [SerializeField] private Transform slotParent;
-    [SerializeField] private RecipeList recipeList; //from this i need to load from each recipe: icon, name and ingredients to make || to swap in prefab: icon and name || after hover over 
-    //recipe slot shows an ingredient list from hover menu???
+    [SerializeField] private RecipeList recipeList; 
 
     private void Start()
     {
@@ -16,9 +15,12 @@ public class CraftingUIManager : MonoBehaviour
     {
         foreach (var recipe in recipeList.recipes)
         {
-            GameObject slotGO = Instantiate(canCraftSlot, slotParent);
-            RecipeSlotUI slotUI = slotGO.GetComponent<RecipeSlotUI>();
+            bool canCraft = CraftingManager.Instance.CanCraft(recipe);
 
+            GameObject prefabToUse = canCraft ? canCraftSlot : missingIngredientsSlot;
+
+            GameObject slotGO = Instantiate(prefabToUse, slotParent);
+            RecipeSlotUI slotUI = slotGO.GetComponent<RecipeSlotUI>();
             slotUI.Setup(recipe);
         }
     }
