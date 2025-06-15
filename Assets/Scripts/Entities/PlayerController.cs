@@ -43,7 +43,13 @@ public class PlayerController : MonoBehaviour
         };
         controls.Gameplay.OpenInventory.performed += ctx =>
         {
-           
+
+            if (isCraftingOpen)
+            {
+                craftingUI.SetActive(false);
+                isCraftingOpen = false;
+            }
+
             if (!isInventoryOpen)
             {
                 inventoryUI.SetActive(true);
@@ -60,6 +66,11 @@ public class PlayerController : MonoBehaviour
 
         controls.Gameplay.CraftingMenu.performed += ctx =>
         {
+            if (isInventoryOpen)
+            {
+                inventoryUI.SetActive(false);
+                isInventoryOpen = false;
+            }
             if (!isCraftingOpen)
             {
                 craftingUI.SetActive(true);
