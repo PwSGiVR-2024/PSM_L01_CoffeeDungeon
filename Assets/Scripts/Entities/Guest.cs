@@ -36,7 +36,7 @@ public class Guest : MonoBehaviour
 
     }
 
-    private void TakeSeat()
+    private void Spawn()
     {
 
     }

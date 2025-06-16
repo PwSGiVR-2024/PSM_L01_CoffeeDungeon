@@ -14,6 +14,8 @@ TagManager:
   - SpawnPointHoldItem
   - Crafting
   - FridgeChest
+  - NPC
+  - Chair
   layers:
   - Default
   - TransparentFX

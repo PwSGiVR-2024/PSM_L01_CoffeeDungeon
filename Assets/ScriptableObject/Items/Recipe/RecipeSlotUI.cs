@@ -53,7 +53,6 @@ public class RecipeSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private void LoadIngredientsList()
     {
-        print("method activated");
         foreach (var ingredient in recipe.ingredients)
         {
             GameObject row = Instantiate(ingredientRowPrefab, content);
