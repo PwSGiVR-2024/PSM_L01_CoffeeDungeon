@@ -9,6 +9,8 @@ public class MovemonetController : MonoBehaviour
     [SerializeField] private float normalSpeed = 6;
     [SerializeField] private float sprintSpeed = 12;
     private Vector3 moveDirection;
+
+    [Header("References")]
     [SerializeField] private InputActionReference movementsActions;
 
     void Start()

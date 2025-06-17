@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GuestSpawner : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private GameObject guestPrefab;
     [SerializeField] private float spawnInterval = 20f;
 

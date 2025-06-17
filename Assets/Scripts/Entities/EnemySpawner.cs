@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private GameObject[] spawnPoints;
     private Transform[] spawnPointsLocation;
 
     [SerializeField] private float spawnInterval = 5f;
@@ -12,6 +10,10 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject player;
     private PlayerController playerController;
+
+    [Header("References")]
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject[] spawnPoints;
 
     void Start()
     {

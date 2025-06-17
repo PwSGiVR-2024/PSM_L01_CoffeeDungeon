@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class RecipeSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [Header("References")]
     [SerializeField] private Image iconImage;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private GameObject ingredientList;

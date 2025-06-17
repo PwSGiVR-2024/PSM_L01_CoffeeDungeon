@@ -5,6 +5,7 @@ using static UnityEditor.Progress;
 
 public class InventoryInputHandler : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Inventory inventory;
     [SerializeField] private InputActionReference PickUpItem;
 

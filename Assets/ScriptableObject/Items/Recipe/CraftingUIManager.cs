@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CraftingUIManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private GameObject canCraftSlot;
     [SerializeField] private GameObject missingIngredientsSlot;
     [SerializeField] private Transform slotParent;

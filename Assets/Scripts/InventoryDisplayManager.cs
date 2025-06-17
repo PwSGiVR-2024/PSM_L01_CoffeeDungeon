@@ -4,6 +4,8 @@ using UnityEngine;
 public class InventoryDisplayManager : MonoBehaviour
 {
     public static InventoryDisplayManager Instance { get; private set; }
+
+    [Header("References")]
     [SerializeField]private Inventory inventory;
     [SerializeField]private Transform slotContainer;
     [SerializeField]private GameObject slotPrefab;

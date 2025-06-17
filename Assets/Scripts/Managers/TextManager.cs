@@ -4,10 +4,10 @@ using UnityEngine;
 public class TextManager : MonoBehaviour
 {
     public static TextManager Instance { get; private set; }
-
     private InventoryInputHandler inventoryInputHandler;
-    [SerializeField] private GameObject communicatUI;
     private TMP_Text communicatText;
+    [Header("References")]
+    [SerializeField] private GameObject communicatUI;
     private void Awake()
     {
         GameObject player = GameObject.Find("Player");

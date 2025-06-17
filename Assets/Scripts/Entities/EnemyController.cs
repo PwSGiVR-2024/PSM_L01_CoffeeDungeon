@@ -5,11 +5,9 @@ public class EnemyController : MonoBehaviour
 {
     public delegate void EnemyDeathDelegate();
 
-
     private GameObject spawner;
     private EnemySpawner spawnerComponent;
     
-
     private void Start()
     {
         spawner = GameObject.Find("EnemySpawner");

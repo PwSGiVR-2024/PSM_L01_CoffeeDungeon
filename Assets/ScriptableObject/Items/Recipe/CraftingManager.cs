@@ -3,6 +3,8 @@ using UnityEngine;
 public class CraftingManager : MonoBehaviour
 {
     public static CraftingManager Instance { get; private set; }
+
+    [Header("References")]
     public Inventory inventory;
 
     private void Awake()

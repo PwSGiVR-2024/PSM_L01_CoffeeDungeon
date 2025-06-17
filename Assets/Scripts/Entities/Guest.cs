@@ -8,10 +8,9 @@ public class Guest : MonoBehaviour
     public ItemData firstChoice;
     public ItemData secondChoice;
 
+    [Header("References")]
     [SerializeField] private Image firstChoiceImage;
     [SerializeField] private Image secondChoiceImage;
-
-
     [SerializeField] private CraftableItemList itemList;
 
 

@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 4392957417780444551}
   - component: {fileID: 6451770972170663947}
   - component: {fileID: 2543974594394031809}
+  - component: {fileID: 2147717641566985771}
   m_Layer: 0
   m_Name: Duck_Npc
   m_TagString: NPC
@@ -667,6 +668,27 @@ MonoBehaviour:
   firstChoiceImage: {fileID: 5242502773062571954}
   secondChoiceImage: {fileID: 6315207991723864071}
   itemList: {fileID: 11400000, guid: fdb5db1b2f3be0a40aa392c2cc525e9b, type: 2}
+--- !u!65 &2147717641566985771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2673883079278512198}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 14.1, y: 15.56, z: 15.67}
+  m_Center: {x: 0, y: 4.62, z: 0}
 --- !u!1 &2685942167131864712
 GameObject:
   m_ObjectHideFlags: 0

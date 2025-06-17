@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
 
     private bool isFightEnabled=false;
     private GameObject[] wallsToDisable;
-    [SerializeField] private GameObject playerWeapon;
     private GameObject respawnPoint;
     private Vector3 respawn;
     private GameObject tray;
@@ -22,8 +21,10 @@ public class PlayerController : MonoBehaviour
     private bool isInventoryOpen = false;
     private bool isCraftingOpen = false;
 
+    [Header("References")]
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject craftingUI;
+    [SerializeField] private GameObject playerWeapon;
     void Start()
     {
         wallsToDisable = GameObject.FindGameObjectsWithTag("BackWalls");

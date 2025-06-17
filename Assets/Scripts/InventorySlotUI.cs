@@ -12,12 +12,14 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public InventorySlot assignedSlot;
 
     public int slotIndex;
-    [SerializeField]public Inventory inventory; 
 
     private Transform ogParent;
     private CanvasGroup canvasGroup;
 
     private GameObject inventoryUI;
+
+    [Header("References")]
+    [SerializeField]public Inventory inventory; 
 
     private void Awake()
     {
