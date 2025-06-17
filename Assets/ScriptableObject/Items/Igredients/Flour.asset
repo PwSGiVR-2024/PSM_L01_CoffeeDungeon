@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e3348fbe16bd64b86fd22c72f2c94e, type: 3}
   m_Name: Flour
   m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 21300000, guid: 046f821c76a004e4c91b9f27ee906194, type: 3}
+  iconPrefab: {fileID: 21300000, guid: b0674455e64e19c49a2f23cfe9fd571c, type: 3}
   inGameObject: {fileID: 0}
   itemName: Flour
   itemType: 3
