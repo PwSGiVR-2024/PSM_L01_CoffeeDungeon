@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
     private int health = 5;
     private LayerMask enemyLayer;
 
-
-    private bool isFightEnabled=false;
+    private bool isFightEnabled = false;
     private GameObject[] wallsToDisable;
     private GameObject respawnPoint;
     private Vector3 respawn;
@@ -21,10 +20,18 @@ public class PlayerController : MonoBehaviour
     private bool isInventoryOpen = false;
     private bool isCraftingOpen = false;
 
+    [SerializeField] private float interactionRange = 5f;
+    [SerializeField] private LayerMask guestLayer;
+
     [Header("References")]
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject craftingUI;
     [SerializeField] private GameObject playerWeapon;
+    [SerializeField] private SelectedItemHolder selectedItemHolder;
+
+    public event Action CanGiveOrder;
+    public event Action LeftOrderTrigger;
+
     void Start()
     {
         wallsToDisable = GameObject.FindGameObjectsWithTag("BackWalls");
@@ -32,6 +39,11 @@ public class PlayerController : MonoBehaviour
         weaponPoint = GameObject.Find("swordTip").transform;
         respawnPoint = GameObject.FindGameObjectWithTag("Respawn");
         tray = GameObject.Find("Tray");
+
+        if (guestLayer == 0)
+        {
+            guestLayer = LayerMask.GetMask("Default");
+        }
 
         controls = new PlayerControls();
         controls.Enable();
@@ -44,7 +56,6 @@ public class PlayerController : MonoBehaviour
         };
         controls.Gameplay.OpenInventory.performed += ctx =>
         {
-
             if (isCraftingOpen)
             {
                 craftingUI.SetActive(false);
@@ -85,11 +96,72 @@ public class PlayerController : MonoBehaviour
                 isCraftingOpen = false;
             }
         };
+
+        controls.Gameplay.Give.performed += ctx =>
+        {
+            TryInteractWithGuest();
+        };
+    }
+
+    private void TryInteractWithGuest()
+    {
+        GameObject[] allGuests = GameObject.FindGameObjectsWithTag("NPC");
+        Collider[] nearbyGuests = Physics.OverlapSphere(transform.position, interactionRange, guestLayer);
+
+        if (nearbyGuests.Length == 0)
+        {
+            foreach (GameObject guestObj in allGuests)
+            {
+                float distance = Vector3.Distance(transform.position, guestObj.transform.position);
+                if (distance <= interactionRange)
+                {
+                    Guest guest = guestObj.GetComponent<Guest>();
+                    if (guest != null && guest.CanReceiveItem())
+                    {
+                        if (selectedItemHolder != null && selectedItemHolder.HasItemSelected())
+                        {
+                            ItemData selectedItem = selectedItemHolder.GetCurrentHeldItem();
+                            guest.ReceiveItem(selectedItem);
+                            selectedItemHolder.ClearSelectedItem();
+                            return;
+                        }
+                        return;
+                    }
+                }
+            }
+            return;
+        }
+
+        Collider closestGuest = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (Collider guestCollider in nearbyGuests)
+        {
+            float distance = Vector3.Distance(transform.position, guestCollider.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestGuest = guestCollider;
+            }
+        }
+
+        if (closestGuest != null)
+        {
+            Guest guest = closestGuest.GetComponent<Guest>();
+            if (guest != null && guest.CanReceiveItem())
+            {
+                if (selectedItemHolder != null && selectedItemHolder.HasItemSelected())
+                {
+                    ItemData selectedItem = selectedItemHolder.GetCurrentHeldItem();
+                    guest.ReceiveItem(selectedItem);
+                    selectedItemHolder.ClearSelectedItem();
+                }
+            }
+        }
     }
 
     private void DealDamage()
     {
-
         Collider[] hitEnemies = Physics.OverlapSphere(weaponPoint.position, attackRange, enemyLayer);
 
         if (hitEnemies.Length > 0)
@@ -110,6 +182,9 @@ public class PlayerController : MonoBehaviour
         if (weaponPoint == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(weaponPoint.position, attackRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, interactionRange);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -117,7 +192,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("FightArena"))
         {
             isFightEnabled = true;
-            foreach(GameObject wall in wallsToDisable)
+            foreach (GameObject wall in wallsToDisable)
             {
                 wall.SetActive(false);
             }
@@ -125,7 +200,12 @@ public class PlayerController : MonoBehaviour
             tray.SetActive(false);
         }
 
+        if (other.CompareTag("NPC"))
+        {
+            CanGiveOrder?.Invoke();
+        }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("FightArena"))
@@ -138,6 +218,11 @@ public class PlayerController : MonoBehaviour
             playerWeapon.SetActive(false);
             tray.SetActive(true);
             health = 5;
+        }
+
+        if (other.CompareTag("NPC"))
+        {
+            LeftOrderTrigger?.Invoke();
         }
     }
 
@@ -156,8 +241,7 @@ public class PlayerController : MonoBehaviour
 
     private void Fallen()
     {
-        respawn=respawnPoint.transform.position;
+        respawn = respawnPoint.transform.position;
         gameObject.transform.position = respawn;
     }
-
 }

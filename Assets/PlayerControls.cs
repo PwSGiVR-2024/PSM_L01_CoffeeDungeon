@@ -153,6 +153,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Give"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5567c5e-b8f8-45bc-b9fd-90cb8681fd84"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -276,6 +285,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""CraftingMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""84ba1163-7bbc-47f9-9a1e-f2ead9a31676"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Give"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -308,6 +328,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_PickUpItem = m_Gameplay.FindAction("PickUpItem", throwIfNotFound: true);
         m_Gameplay_OpenInventory = m_Gameplay.FindAction("OpenInventory", throwIfNotFound: true);
         m_Gameplay_CraftingMenu = m_Gameplay.FindAction("CraftingMenu", throwIfNotFound: true);
+        m_Gameplay_Give = m_Gameplay.FindAction("Give", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -395,6 +416,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_PickUpItem;
     private readonly InputAction m_Gameplay_OpenInventory;
     private readonly InputAction m_Gameplay_CraftingMenu;
+    private readonly InputAction m_Gameplay_Give;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -434,6 +456,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/CraftingMenu".
         /// </summary>
         public InputAction @CraftingMenu => m_Wrapper.m_Gameplay_CraftingMenu;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Give".
+        /// </summary>
+        public InputAction @Give => m_Wrapper.m_Gameplay_Give;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -481,6 +507,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CraftingMenu.started += instance.OnCraftingMenu;
             @CraftingMenu.performed += instance.OnCraftingMenu;
             @CraftingMenu.canceled += instance.OnCraftingMenu;
+            @Give.started += instance.OnGive;
+            @Give.performed += instance.OnGive;
+            @Give.canceled += instance.OnGive;
         }
 
         /// <summary>
@@ -513,6 +542,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CraftingMenu.started -= instance.OnCraftingMenu;
             @CraftingMenu.performed -= instance.OnCraftingMenu;
             @CraftingMenu.canceled -= instance.OnCraftingMenu;
+            @Give.started -= instance.OnGive;
+            @Give.performed -= instance.OnGive;
+            @Give.canceled -= instance.OnGive;
         }
 
         /// <summary>
@@ -615,5 +647,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCraftingMenu(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Give" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGive(InputAction.CallbackContext context);
     }
 }

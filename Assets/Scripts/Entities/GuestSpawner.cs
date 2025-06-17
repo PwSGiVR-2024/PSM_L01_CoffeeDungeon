@@ -45,7 +45,6 @@ public class GuestSpawner : MonoBehaviour
 
         if (availableChairs.Count == 0)
         {
-            Debug.Log("All chairs are occupied. No guest spawned.");
             return;
         }
 
@@ -103,5 +102,17 @@ public class GuestSpawner : MonoBehaviour
             }
         }
     }
+    public void FreeChair(Transform chair)
+    {
+        if (occupiedChairs.Contains(chair))
+        {
+            occupiedChairs.Remove(chair);
+        }
+    }
 
+
+    public int GetTotalChairCount()
+    {
+        return allChairs.Count;
+    }
 }

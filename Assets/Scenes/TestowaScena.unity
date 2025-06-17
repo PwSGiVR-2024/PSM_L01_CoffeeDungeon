@@ -2147,7 +2147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &413734295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3426,7 +3426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 24.31897, y: -50.898987}
+  m_AnchoredPosition: {x: 24.318848, y: -50.898926}
   m_SizeDelta: {x: -615.6406, y: -537.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620702994
@@ -3992,7 +3992,6 @@ MonoBehaviour:
   invalidDropColor: {r: 0.5698112, g: 0.20104659, b: 0.20104659, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  enableDebugLogging: 1
 --- !u!1001 &776983224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6142,9 +6141,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1
+  interactionRange: 2
+  guestLayer:
+    serializedVersion: 2
+    m_Bits: 512
   inventoryUI: {fileID: 413734294}
   craftingUI: {fileID: 2016034921}
   playerWeapon: {fileID: 2109924986}
+  selectedItemHolder: {fileID: 765690277}
 --- !u!54 &1192639270
 Rigidbody:
   m_ObjectHideFlags: 0

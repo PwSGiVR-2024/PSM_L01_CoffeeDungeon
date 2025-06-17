@@ -7,7 +7,7 @@ public class SelectedItemHolder : MonoBehaviour, IDropHandler, IPointerEnterHand
 {
     [Header("References")]
     [SerializeField] private RecipeList recipeList;
-    [SerializeField] private Transform spawnPoint; // SpawnPointHoldItem (child of Tray)
+    [SerializeField] private Transform spawnPoint;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TMP_Text itemNameText;
 
