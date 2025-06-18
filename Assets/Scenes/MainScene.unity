@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guestPrefab: {fileID: 2673883079278512198, guid: ef55e29e6fa7b0741ba2139a6a991dc0, type: 3}
-  spawnInterval: 20
+  spawnInterval: 7
 --- !u!4 &317895334
 Transform:
   m_ObjectHideFlags: 0
@@ -4333,7 +4333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f036b28f168524e4193bed543ecbaf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeList: {fileID: 0}
+  recipeList: {fileID: 11400000, guid: e8ec16b9c42b6474dabcb596bce29462, type: 2}
   spawnPoint: {fileID: 1506467641}
   itemIcon: {fileID: 637041608}
   itemNameText: {fileID: 2103699474}
@@ -4796,7 +4796,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516ec66b46c484b428d6e711cb82d1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  satisfactionScore: 0
+  satisfactionIcon: {fileID: 1309443587}
+  happySprite: {fileID: 21300000, guid: 3d1828307fbfad54b8299019f9fc90df, type: 3}
+  neutralSprite: {fileID: 21300000, guid: 6614ecfdc6a421b44beecebd7a0a165b, type: 3}
+  disappointedSprite: {fileID: 21300000, guid: 8ee914f6449e0b64989ea765cb7aad6a, type: 3}
 --- !u!4 &808517817
 Transform:
   m_ObjectHideFlags: 0
@@ -6014,6 +6017,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   communicatUI: {fileID: 1563263674}
+  scoreText: {fileID: 1487841596}
+  satisfactionIcon: {fileID: 0}
 --- !u!4 &1043297673
 Transform:
   m_ObjectHideFlags: 0
@@ -8640,7 +8645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d9725842abab4948b0049b64af7ee54, type: 2}
   m_sharedMaterial: {fileID: -6903179668357848200, guid: 6d9725842abab4948b0049b64af7ee54, type: 2}

@@ -1,17 +1,37 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using UnityEngine.UI;
+
+enum SatisfactionLevel
+{
+    neutral,
+    happy,
+    disappointed
+}
 
 public class SatisfactionManager : MonoBehaviour
 {
     public static SatisfactionManager Instance { get; private set; }
 
-    public int satisfactionScore;
+    private int satisfactionScore=0;
     private readonly int happy = 100;
-    private int neutral = 50;
-    private int disappointed = -50;
+    private readonly int neutral = 50;
+    private readonly int disappointed = -50;
     private readonly Dictionary<Guest, System.Action> firstChoiceHandlers = new();
     private readonly Dictionary<Guest, System.Action> secondChoiceHandlers = new();
     private readonly Dictionary<Guest, System.Action> incorrectChoiceHandlers = new();
+    private SatisfactionLevel satisfactionLevel;
+
+    [Header("References")]
+    [SerializeField] private Image satisfactionIcon;
+
+    [Header("Sprites")]
+    [SerializeField] private Sprite happySprite;
+    [SerializeField] private Sprite neutralSprite;
+    [SerializeField] private Sprite disappointedSprite;
+
+    public event Action ScoreChanged;
 
     private void Awake()
     {
@@ -23,6 +43,8 @@ public class SatisfactionManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        WhatSatisfaction();
     }
 
     public void RegisterGuest(Guest guest)
@@ -68,6 +90,32 @@ public class SatisfactionManager : MonoBehaviour
     private void AddSatisfaction(int amount)
     {
         satisfactionScore += amount;
-        Debug.Log("Satisfaction Updated: " + satisfactionScore);
+        WhatSatisfaction();
+        ScoreChanged?.Invoke();
     }
+
+    public int GetScore()
+    {
+        return satisfactionScore;
+    }
+
+    private void WhatSatisfaction()
+    {
+        if (satisfactionScore > 1000)
+        {
+            satisfactionLevel = SatisfactionLevel.happy;
+            satisfactionIcon.sprite = happySprite;
+        }
+        else if (satisfactionScore < 0)
+        {
+            satisfactionLevel = SatisfactionLevel.disappointed;
+            satisfactionIcon.sprite = disappointedSprite;
+        }
+        else
+        {
+            satisfactionLevel = SatisfactionLevel.neutral;
+            satisfactionIcon.sprite = neutralSprite;
+        }
+    }
+
 }

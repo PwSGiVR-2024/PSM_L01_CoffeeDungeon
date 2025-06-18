@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using static UnityEditor.Searcher.Searcher.AnalyticsEvent;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.UI;
 
 public enum TextEvent
 {
@@ -17,9 +18,11 @@ public class TextManager : MonoBehaviour
     private TMP_Text communicatText;
     [Header("References")]
     [SerializeField] private GameObject communicatUI;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] Image satisfactionIcon;
 
-    private string itemPickupText = "To pick up item press F";
-    private string giveOrderText = "To give order press G";
+    private readonly string itemPickupText = "To pick up item press F";
+    private readonly string giveOrderText = "To give order press G";
     private void Awake()
     {
         GameObject player = GameObject.Find("Player");
@@ -48,6 +51,7 @@ public class TextManager : MonoBehaviour
         playerController.CanGiveOrder += () => ShowCommunicatText(TextEvent.GiveOrder);
         inventoryInputHandler.LeaveItemTrigger += ResetCommunicatText;
         playerController.LeftOrderTrigger += ResetCommunicatText;
+        SatisfactionManager.Instance.ScoreChanged += ChangeScoreText;
     }
     private void OnDisable()
     {
@@ -55,6 +59,7 @@ inventoryInputHandler.InItemTrigger -= () => ShowCommunicatText(TextEvent.ItemPi
         inventoryInputHandler.LeaveItemTrigger -= ResetCommunicatText;
         playerController.CanGiveOrder -= () => ShowCommunicatText(TextEvent.GiveOrder);
         playerController.LeftOrderTrigger -= ResetCommunicatText;
+        SatisfactionManager.Instance.ScoreChanged -= ChangeScoreText;
     }
 
     private void ShowCommunicatText(TextEvent eventType)
@@ -78,6 +83,12 @@ inventoryInputHandler.InItemTrigger -= () => ShowCommunicatText(TextEvent.ItemPi
     private void ResetCommunicatText()
     {
         communicatText.text = "";
+    }
+
+    private void ChangeScoreText()
+    {
+        int score = SatisfactionManager.Instance.GetScore();
+        scoreText.text = score.ToString();
     }
 
 }
