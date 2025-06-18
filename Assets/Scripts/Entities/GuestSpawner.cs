@@ -51,8 +51,14 @@ public class GuestSpawner : MonoBehaviour
         Transform chosenChair = availableChairs[Random.Range(0, availableChairs.Count)];
         GameObject guest = Instantiate(guestPrefab, chosenChair.position, chosenChair.rotation);
 
-        occupiedChairs.Add(chosenChair);
+        Guest guestComponent = guest.GetComponent<Guest>();
 
+        if (guestComponent != null)
+        {
+            SatisfactionManager.Instance?.RegisterGuest(guestComponent);
+        }
+
+        occupiedChairs.Add(chosenChair);
         StartCoroutine(FadeInGuest(guest));
     }
 

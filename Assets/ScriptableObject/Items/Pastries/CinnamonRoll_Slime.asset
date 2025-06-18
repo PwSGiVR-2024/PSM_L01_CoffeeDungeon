@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69e3348fbe16bd64b86fd22c72f2c94e, type: 3}
-  m_Name: CinnamonRoll
+  m_Name: CinnamonRoll_Slime
   m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 21300000, guid: a1b45ca526f001741899ac23a8909446, type: 3}
+  iconPrefab: {fileID: 21300000, guid: 9627d3703e974fa4f967c986d2be61a7, type: 3}
   inGameObject: {fileID: 118155509110143473, guid: 521dca5e4f02f5042b0bcf73c798e832, type: 3}
-  itemName: Cinnamon Roll
+  itemName: Cinnamon Roll With Slime
   itemType: 0
   isCraftable: 1

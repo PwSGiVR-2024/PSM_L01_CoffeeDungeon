@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69e3348fbe16bd64b86fd22c72f2c94e, type: 3}
-  m_Name: CinnamonRoll
+  m_Name: Tea_Slime
   m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 21300000, guid: a1b45ca526f001741899ac23a8909446, type: 3}
-  inGameObject: {fileID: 118155509110143473, guid: 521dca5e4f02f5042b0bcf73c798e832, type: 3}
-  itemName: Cinnamon Roll
-  itemType: 0
+  iconPrefab: {fileID: 21300000, guid: 3f00d77e099ed7b4aa64cfbab7914eb9, type: 3}
+  inGameObject: {fileID: 2230582867971379617, guid: 025dfb19e92ee2543866a863ca173eae, type: 3}
+  itemName: Tea With Slime
+  itemType: 1
   isCraftable: 1

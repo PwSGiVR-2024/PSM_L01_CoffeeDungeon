@@ -15,4 +15,5 @@ public class CraftingRecipe : ScriptableObject
     public List<Ingredient> ingredients;
     public ItemData result;
     public int resultQuantity = 1;
+    public bool hasExtraMonsterTouch;
 }

@@ -663,14 +663,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d841cbb063c31f48a80535ebb63e0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstChoice: {fileID: 0}
-  secondChoice: {fileID: 0}
   firstChoiceImage: {fileID: 5242502773062571954}
   secondChoiceImage: {fileID: 6315207991723864071}
   itemList: {fileID: 11400000, guid: fdb5db1b2f3be0a40aa392c2cc525e9b, type: 2}
-  satisfactionTime: 3
-  disappointmentTime: 2
+  inventory: {fileID: 11400000, guid: 801d55b8d1039704aab1679f7bc53798, type: 2}
+  leaveTime: 2
   fadeOutDuration: 1
+  satisfactionEffect: {fileID: 0}
+  disappointmentEffect: {fileID: 0}
+  neutralEffect: {fileID: 0}
+  satisfactionSound: {fileID: 0}
+  disappointmentSound: {fileID: 0}
+  neutralSound: {fileID: 0}
 --- !u!65 &2147717641566985771
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -690,7 +694,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 14.1, y: 15.56, z: 15.67}
+  m_Size: {x: 13.6, y: 14.1, z: 12.13}
   m_Center: {x: 0, y: 4.62, z: 0}
 --- !u!1 &2685942167131864712
 GameObject:

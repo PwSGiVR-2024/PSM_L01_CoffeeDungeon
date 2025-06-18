@@ -1,29 +1,34 @@
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Guest : MonoBehaviour
 {
-    public ItemData firstChoice;
-    public ItemData secondChoice;
+
+    private ItemData firstChoice;
+    private ItemData secondChoice;
 
     [Header("References")]
     [SerializeField] private Image firstChoiceImage;
     [SerializeField] private Image secondChoiceImage;
     [SerializeField] private CraftableItemList itemList;
+    [SerializeField] private Inventory inventory;
 
     [Header("Guest Settings")]
-    [SerializeField] private float satisfactionTime = 3f;
-    [SerializeField] private float disappointmentTime = 2f;
+    [SerializeField] private float leaveTime = 2f;
     [SerializeField] private float fadeOutDuration = 1f;
 
     [Header("Feedback")]
     [SerializeField] private GameObject satisfactionEffect;
     [SerializeField] private GameObject disappointmentEffect;
+    [SerializeField] private GameObject neutralEffect;
     [SerializeField] private AudioClip satisfactionSound;
     [SerializeField] private AudioClip disappointmentSound;
+    [SerializeField] private AudioClip neutralSound;
 
 
     private bool hasReceivedItem = false;
@@ -31,6 +36,11 @@ public class Guest : MonoBehaviour
     private Transform occupiedChair;
     private GuestSpawner spawner;
     private AudioSource audioSource;
+
+    //events
+    public event Action FirstChoiceSatisfaction;
+    public event Action SecondChoiceSatisfaction;
+    public event Action IncorrectChoiceSatysfaction;
 
     private void Awake()
     {
@@ -79,7 +89,9 @@ public class Guest : MonoBehaviour
         int index1 = Random.Range(0, itemList.craftableItems.Count);
         firstChoice = itemList.craftableItems[index1];
 
+        //second choice cant be the same as the first 
         int index2;
+
         do
         {
             index2 = Random.Range(0, itemList.craftableItems.Count);
@@ -87,60 +99,76 @@ public class Guest : MonoBehaviour
 
         secondChoice = itemList.craftableItems[index2];
         
+        //set ui elements
         if (firstChoiceImage != null && firstChoice != null)
             firstChoiceImage.sprite = firstChoice.iconPrefab;
 
         if (secondChoiceImage != null && secondChoice != null)
             secondChoiceImage.sprite = secondChoice.iconPrefab;
+
+        print(firstChoice + " "+  secondChoice);
     }
 
     public void ReceiveItem(ItemData receivedItem)
     {
 
-        if (receivedItem == null)
-        {
-            return;
-        }
-
-        if (hasReceivedItem)
-        {
-            return;
-        }
-
-        if (isLeaving)
+        if (receivedItem == null || hasReceivedItem || isLeaving)
         {
             return;
         }
 
         hasReceivedItem = true;
             
-        if (receivedItem == firstChoice || receivedItem == secondChoice)
+        if (receivedItem == firstChoice)
         {
-            ReactToCorrectItem(receivedItem);
+            FirstChoiceSatisfaction?.Invoke();
+            ReactToFirstChoiceItem(receivedItem);
         }
+
+        else if(receivedItem == secondChoice)
+        {
+            SecondChoiceSatisfaction?.Invoke();
+            ReactToSecondChoiceItem(receivedItem);
+        }
+
         else
         {
+            IncorrectChoiceSatysfaction?.Invoke();
             ReactToIncorrectItem(receivedItem);
         }
+
+        StartCoroutine(LeaveAfterRecivingOrder());
+        inventory.RemoveItem(receivedItem,1);
     }
 
-    private void ReactToCorrectItem(ItemData item)
+    private void ReactToFirstChoiceItem(ItemData item)
     {
-        
+        print("happy c:");
         if (audioSource != null && satisfactionSound != null)
         {
             audioSource.PlayOneShot(satisfactionSound);
         }
         
-        if (satisfactionEffect != null)
-        {
-            GameObject effect = Instantiate(satisfactionEffect, transform.position, transform.rotation);
-            Destroy(effect, 3f);
-        }
+        //if (satisfactionEffect != null)
+        //{
+        //    GameObject effect = Instantiate(satisfactionEffect, transform.position, transform.rotation);
+        //    Destroy(effect, 3f);
+        //}
         
-        RateOrder(true);
-        Pay(true);
-        StartCoroutine(LeaveAfterSatisfaction());
+    }
+
+    private void ReactToSecondChoiceItem(ItemData item)
+    {
+        print("not so happy but not bad c:");
+        if (audioSource != null && neutralSound != null)
+        {
+            audioSource.PlayOneShot(neutralSound);
+        }
+        //if (satisfactionEffect != null)
+        //{
+        //    GameObject effect = Instantiate(neutralEffect, transform.position, transform.rotation);
+        //    Destroy(effect, 3f);
+        //}
     }
 
     private void ReactToIncorrectItem(ItemData item)
@@ -151,72 +179,31 @@ public class Guest : MonoBehaviour
             audioSource.PlayOneShot(disappointmentSound);
         }
         
-        if (disappointmentEffect != null)
-        {
-            GameObject effect = Instantiate(disappointmentEffect, transform.position, transform.rotation);
-            Destroy(effect, 3f);
-        }
-        
-        RateOrder(false);
-        Pay(false);
-        StartCoroutine(LeaveAfterDisappointment());
+        //if (disappointmentEffect != null)
+        //{
+        //    GameObject effect = Instantiate(disappointmentEffect, transform.position, transform.rotation);
+        //    Destroy(effect, 3f);
+        //}
     }
 
-    private void RateOrder(bool isPositive)
-    {
-        //just ui emoji maybe?
-    }
-
-    private void Pay(bool isCorrectOrder)
-    {
-       //still to do
-    }
-
-    private IEnumerator LeaveAfterSatisfaction()
+    private IEnumerator LeaveAfterRecivingOrder()
     {
         isLeaving = true;
-        yield return new WaitForSeconds(satisfactionTime);
+        yield return new WaitForSeconds(leaveTime);
         yield return StartCoroutine(FadeOutAndDestroy());
     }
 
-    private IEnumerator LeaveAfterDisappointment()
-    {
-        isLeaving = true;
-        yield return new WaitForSeconds(disappointmentTime);
-        yield return StartCoroutine(FadeOutAndDestroy());
-    }
 
     private IEnumerator FadeOutAndDestroy()
     {
-        
-        Renderer[] renderers = GetComponentsInChildren<Renderer>();
-        List<Material> materials = new();
-
-        foreach (Renderer renderer in renderers)
-        {
-            Material[] mats = renderer.materials;
-            for (int i = 0; i < mats.Length; i++)
-            {
-                mats[i] = new Material(mats[i]);
-            }
-            renderer.materials = mats;
-            materials.AddRange(mats);
-        }
+        List<Material> materials = CloneAllMaterials();
 
         float time = 0f;
 
         while (time < fadeOutDuration)
         {
             float alpha = Mathf.Lerp(1f, 0f, time / fadeOutDuration);
-            foreach (Material mat in materials)
-            {
-                if (mat.HasProperty("_BaseColor"))
-                {
-                    Color color = mat.GetColor("_BaseColor");
-                    color.a = alpha;
-                    mat.SetColor("_BaseColor", color);
-                }
-            }
+            SetMaterialsAlpha(materials, alpha);
 
             time += Time.deltaTime;
             yield return null;
@@ -226,9 +213,44 @@ public class Guest : MonoBehaviour
         {
             spawner.FreeChair(occupiedChair);
         }
+        SatisfactionManager.Instance?.UnregisterGuest(this);
         Destroy(gameObject);
     }
 
+    private List<Material> CloneAllMaterials()
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        List<Material> clonedMaterials = new();
+
+        foreach (Renderer renderer in renderers)
+        {
+            Material[] originalMats = renderer.materials;
+            Material[] newMats = new Material[originalMats.Length];
+
+            for (int i = 0; i < originalMats.Length; i++)
+            {
+                newMats[i] = new Material(originalMats[i]);
+                clonedMaterials.Add(newMats[i]);
+            }
+
+            renderer.materials = newMats;
+        }
+
+        return clonedMaterials;
+    }
+
+    private void SetMaterialsAlpha(List<Material> materials, float alpha)
+    {
+        foreach (Material mat in materials)
+        {
+            if (mat.HasProperty("_BaseColor"))
+            {
+                Color color = mat.GetColor("_BaseColor");
+                color.a = alpha;
+                mat.SetColor("_BaseColor", color);
+            }
+        }
+    }
 
     public bool CanReceiveItem()
     {
@@ -236,8 +258,4 @@ public class Guest : MonoBehaviour
         return canReceive;
     }
 
-    public ItemData[] GetPreferences()
-    {
-        return new ItemData[] { firstChoice, secondChoice };
-    }
 }
