@@ -5422,7 +5422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   satisfactionIcon: {fileID: 1309443587}
-  endRunCanvas: {fileID: 0}
+  endRunCanvas: {fileID: 1780939783}
   happySprite: {fileID: 21300000, guid: 3d1828307fbfad54b8299019f9fc90df, type: 3}
   neutralSprite: {fileID: 21300000, guid: 6614ecfdc6a421b44beecebd7a0a165b, type: 3}
   disappointedSprite: {fileID: 21300000, guid: 8ee914f6449e0b64989ea765cb7aad6a, type: 3}
@@ -6983,8 +6983,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 808517816}
-        m_TargetAssemblyTypeName: SatisfactionManager, Assembly-CSharp
+      - m_Target: {fileID: 1028838610}
+        m_TargetAssemblyTypeName: ButtonsManager, Assembly-CSharp
         m_MethodName: OnClickEndRun
         m_Mode: 1
         m_Arguments:
@@ -7033,6 +7033,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026632162}
   m_CullTransparentMesh: 1
+--- !u!1 &1028838609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1028838611}
+  - component: {fileID: 1028838610}
+  m_Layer: 0
+  m_Name: ButtonsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1028838610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028838609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e42339c1e49a443a123a3e1ced2dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endRunCanvas: {fileID: 1780939783}
+--- !u!4 &1028838611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028838609}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1108.2738, y: 726.30914, z: -13.25768}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043297671
 GameObject:
   m_ObjectHideFlags: 0
@@ -7466,7 +7511,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1172978544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1028838610}
+        m_TargetAssemblyTypeName: ButtonsManager, Assembly-CSharp
+        m_MethodName: OnClickGoToEndRunScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1172978544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14274,7 +14331,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2107451993}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1028838610}
+        m_TargetAssemblyTypeName: ButtonsManager, Assembly-CSharp
+        m_MethodName: OnClickReturnToGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2107451993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14693,6 +14762,7 @@ SceneRoots:
   - {fileID: 604113027}
   - {fileID: 832575519}
   - {fileID: 842551436}
+  - {fileID: 1028838611}
   - {fileID: 484247764}
   - {fileID: 808517817}
   - {fileID: 1775038496}

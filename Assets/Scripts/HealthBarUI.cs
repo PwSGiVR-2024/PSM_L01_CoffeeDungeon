@@ -25,8 +25,6 @@ public class HealthBarUI : MonoBehaviour
             return;
         }
 
-        Debug.Log($"Hearts list count: {heartsList.Count}");
-
         playerController.LoseHeart += LoseHeart;
         playerController.RestoreHearts += RestoreAllHearts;
 

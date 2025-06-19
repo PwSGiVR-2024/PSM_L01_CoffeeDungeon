@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 
-enum SatisfactionLevel
+public enum SatisfactionLevel
 {
     neutral,
     happy,
@@ -42,10 +42,9 @@ public class SatisfactionManager : MonoBehaviour
         {
             Destroy(this);
         }
-        else
-        {
-            Instance = this;
-        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         WhatSatisfaction();
     }
@@ -110,6 +109,11 @@ public class SatisfactionManager : MonoBehaviour
         return satisfactionScore;
     }
 
+    public SatisfactionLevel GetSatisfacionLevel()
+    {
+        return satisfactionLevel;
+    }
+
     private void WhatSatisfaction()
     {
         if (satisfactionScore > 1000)
@@ -127,11 +131,6 @@ public class SatisfactionManager : MonoBehaviour
             satisfactionLevel = SatisfactionLevel.neutral;
             satisfactionIcon.sprite = neutralSprite;
         }
-    }
-
-    public void OnClickEndRun()
-    {
-        endRunCanvas.SetActive(true);
     }
 
 }
