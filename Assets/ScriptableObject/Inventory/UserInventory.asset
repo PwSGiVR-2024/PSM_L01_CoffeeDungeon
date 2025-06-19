@@ -15,7 +15,7 @@ MonoBehaviour:
   inventoryCapacity: 20
   slots:
   - item: {fileID: 11400000, guid: 99c9f149e04aae4439d54067cdb4bc85, type: 2}
-    amount: 98
+    amount: 99
   - item: {fileID: 11400000, guid: 84183d77863018f499f9b210552247aa, type: 2}
     amount: 99
   - item: {fileID: 11400000, guid: ecfe261831e407641b188621ea6ef6a2, type: 2}
@@ -25,8 +25,14 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: da4f11671f032aa40b38ae8ce8a25702, type: 2}
     amount: 99
   - item: {fileID: 11400000, guid: 3e85cee936c7f724599245f243bcb2a2, type: 2}
-    amount: 97
+    amount: 99
   - item: {fileID: 11400000, guid: d1e162780dfe2cc42aeaac9212407f50, type: 2}
-    amount: 98
+    amount: 99
   - item: {fileID: 11400000, guid: 2b19de83166bb054f88a42fa41a92381, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: d57d9e1f3e52d244693c09e6657e044c, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 9e77891b820a37d44bfceec61b5a713a, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 7fc47a261cca81c449fdc8f9c3672d24, type: 2}
     amount: 1

@@ -162,6 +162,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tutorial"",
+                    ""type"": ""Button"",
+                    ""id"": ""9376888c-bbdc-48a2-b208-404b00229fee"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -296,6 +305,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Give"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d535f641-eb88-4781-a210-ebe7cb567ef1"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tutorial"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -329,6 +349,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_OpenInventory = m_Gameplay.FindAction("OpenInventory", throwIfNotFound: true);
         m_Gameplay_CraftingMenu = m_Gameplay.FindAction("CraftingMenu", throwIfNotFound: true);
         m_Gameplay_Give = m_Gameplay.FindAction("Give", throwIfNotFound: true);
+        m_Gameplay_Tutorial = m_Gameplay.FindAction("Tutorial", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -417,6 +438,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_OpenInventory;
     private readonly InputAction m_Gameplay_CraftingMenu;
     private readonly InputAction m_Gameplay_Give;
+    private readonly InputAction m_Gameplay_Tutorial;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -460,6 +482,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Give".
         /// </summary>
         public InputAction @Give => m_Wrapper.m_Gameplay_Give;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Tutorial".
+        /// </summary>
+        public InputAction @Tutorial => m_Wrapper.m_Gameplay_Tutorial;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -510,6 +536,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Give.started += instance.OnGive;
             @Give.performed += instance.OnGive;
             @Give.canceled += instance.OnGive;
+            @Tutorial.started += instance.OnTutorial;
+            @Tutorial.performed += instance.OnTutorial;
+            @Tutorial.canceled += instance.OnTutorial;
         }
 
         /// <summary>
@@ -545,6 +574,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Give.started -= instance.OnGive;
             @Give.performed -= instance.OnGive;
             @Give.canceled -= instance.OnGive;
+            @Tutorial.started -= instance.OnTutorial;
+            @Tutorial.performed -= instance.OnTutorial;
+            @Tutorial.canceled -= instance.OnTutorial;
         }
 
         /// <summary>
@@ -654,5 +686,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnGive(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Tutorial" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTutorial(InputAction.CallbackContext context);
     }
 }
