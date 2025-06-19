@@ -23,7 +23,6 @@ public class EndingStats : MonoBehaviour
         {
             satisfactionScore = SatisfactionManager.Instance.GetScore();
             level = SatisfactionManager.Instance.GetSatisfacionLevel();
-            Debug.Log($"Score: {satisfactionScore}, Level: {level}");
 
             scoreText.text = satisfactionScore.ToString();
             satisfacitionText.text = level.ToString();

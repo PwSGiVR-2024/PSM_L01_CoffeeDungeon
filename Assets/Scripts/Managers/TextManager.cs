@@ -1,7 +1,5 @@
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Searcher.Searcher.AnalyticsEvent;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 
 public enum TextEvent
