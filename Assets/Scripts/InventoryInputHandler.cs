@@ -8,15 +8,23 @@ public class InventoryInputHandler : MonoBehaviour
     [Header("References")]
     [SerializeField] private Inventory inventory;
     [SerializeField] private InputActionReference PickUpItem;
+    [SerializeField] private AudioClip pickUpSound;
+    
 
     private bool itemInPlayerRange = false;
 
 
     private GameObject currentItemObject;
     private ItemData currentItemData;
+    private AudioSource audioSource;
 
     public event Action InItemTrigger;
     public event Action LeaveItemTrigger;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnEnable()
     {
@@ -35,6 +43,11 @@ public class InventoryInputHandler : MonoBehaviour
 
         if (itemInPlayerRange && currentItemData != null)
         {
+            if (audioSource != null && pickUpSound != null)
+            {
+                audioSource.PlayOneShot(pickUpSound);
+            }
+
             inventory.AddItem(currentItemData, 1);
             Destroy(currentItemObject);
             currentItemObject = null;

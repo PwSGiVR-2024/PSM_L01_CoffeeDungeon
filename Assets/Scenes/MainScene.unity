@@ -9568,7 +9568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 308}
+  m_AnchoredPosition: {x: 4, y: 313}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754531939
@@ -9607,10 +9607,13 @@ MonoBehaviour:
     Pick Up
     Item: F
 
-
     Goal: Gain as much Satisfaction Points as is it possible (<0 guests
     are dissapointed, =>0&<1000 neutral, >1000 guest are happy). When you finish
-    click end run button for end results.'
+    click end run button for end results.
+
+    There are 4 types of items to give:
+    first choice(+100), second choice(+50), disliked(-50) and liked by everybody
+    slime items(+50)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d9725842abab4948b0049b64af7ee54, type: 2}
   m_sharedMaterial: {fileID: -6903179668357848200, guid: 6d9725842abab4948b0049b64af7ee54, type: 2}
@@ -9675,7 +9678,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -470.17603, y: 0, z: -460.54773, w: -548.7018}
+  m_margin: {x: -470.17603, y: 0, z: -460.54773, w: -567.51624}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -15675,6 +15678,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 13406f9e851d0084cb64633e33f9c33a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1192639275}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 13406f9e851d0084cb64633e33f9c33a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1192639276}
   m_SourcePrefab: {fileID: 100100000, guid: 13406f9e851d0084cb64633e33f9c33a, type: 3}
 --- !u!4 &1192639263 stripped
 Transform:
@@ -15700,6 +15706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 801d55b8d1039704aab1679f7bc53798, type: 2}
   PickUpItem: {fileID: -195273821192456582, guid: 53910c998138af64b9e11dbea9833206, type: 3}
+  pickUpSound: {fileID: 8300000, guid: 8fed7d254952c4f46953c0fc106b8aa6, type: 3}
 --- !u!114 &1192639268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15851,6 +15858,103 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &1192639276
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192639265}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1196856785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d44675fd98c34940a4c9207d8ee0fec, type: 3}
@@ -20587,7 +20691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 213, y: -308}
+  m_AnchoredPosition: {x: 213, y: -327}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1611689670
@@ -20619,8 +20723,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292407039
-  m_fontColor: {r: 1, g: 0.93333334, b: 0.84705883, a: 1}
+    rgba: 2449473536
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0.57254905}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

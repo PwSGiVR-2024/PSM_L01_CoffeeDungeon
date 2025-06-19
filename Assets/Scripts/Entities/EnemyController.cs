@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class EnemyController : MonoBehaviour
 {
@@ -7,9 +8,14 @@ public class EnemyController : MonoBehaviour
 
     private GameObject spawner;
     private EnemySpawner spawnerComponent;
+    private AudioSource audioSource;
+
+    [Header("References")]
+    [SerializeField] private AudioClip dieSound;
     
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         spawner = GameObject.Find("EnemySpawner");
         spawnerComponent = spawner.GetComponent<EnemySpawner>();
     }
@@ -32,7 +38,11 @@ public class EnemyController : MonoBehaviour
             );
         }
 
-        Destroy(gameObject);
+        if (audioSource != null && dieSound != null)
+        {
+            audioSource.PlayOneShot(dieSound);
+        }
+        Destroy(gameObject, dieSound.length);
         spawnerComponent.currentEnemyCount-=1;
     }
    
