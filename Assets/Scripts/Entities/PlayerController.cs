@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
 
     private bool isInventoryOpen = false;
     private bool isCraftingOpen = false;
+    private bool isTutorialOpen = true;
 
     [SerializeField] private float interactionRange = 5f;
     [SerializeField] private LayerMask guestLayer;
 
     [Header("References")]
     [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private GameObject tutorialUI;
     [SerializeField] private GameObject craftingUI;
     [SerializeField] private GameObject playerWeapon;
     [SerializeField] private SelectedItemHolder selectedItemHolder;
@@ -57,12 +59,19 @@ public class PlayerController : MonoBehaviour
                 DealDamage();
             }
         };
+
         controls.Gameplay.OpenInventory.performed += ctx =>
         {
             if (isCraftingOpen)
             {
                 craftingUI.SetActive(false);
                 isCraftingOpen = false;
+            }
+
+            if (isTutorialOpen)
+            {
+                tutorialUI.SetActive(false);
+                isTutorialOpen = false;
             }
 
             if (!isInventoryOpen)
@@ -86,6 +95,13 @@ public class PlayerController : MonoBehaviour
                 inventoryUI.SetActive(false);
                 isInventoryOpen = false;
             }
+
+            if (isTutorialOpen)
+            {
+                tutorialUI.SetActive(false);
+                isTutorialOpen = false;
+            }
+
             if (!isCraftingOpen)
             {
                 craftingUI.SetActive(true);
@@ -97,6 +113,34 @@ public class PlayerController : MonoBehaviour
                 craftingUI.SetActive(false);
                 Time.timeScale = 1f;
                 isCraftingOpen = false;
+            }
+        };
+
+        controls.Gameplay.Tutorial.performed += ctx =>
+        {
+            if (isInventoryOpen)
+            {
+                inventoryUI.SetActive(false);
+                isInventoryOpen = false;
+            }
+
+            if (isCraftingOpen)
+            {
+                craftingUI.SetActive(false);
+                isCraftingOpen = false;
+            }
+
+            if (!isTutorialOpen)
+            {
+                tutorialUI.SetActive(true);
+                Time.timeScale = 0f;
+                isTutorialOpen = true;
+            }
+            else
+            {
+                tutorialUI.SetActive(false);
+                Time.timeScale = 1f;
+                isTutorialOpen = false;
             }
         };
 
