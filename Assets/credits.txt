@@ -1,0 +1,26 @@
+Assets
+[Models]
+https://tinytreats.itch.io/
+https://tinytreats.itch.io/bakery-interior
+http://tinytreats.itch.io/pleasant-picnic
+https://tinytreats.itch.io/charming-kitchen
+https://tinytreats.itch.io/baked-goods
+https://tinytreats.itch.io/homely-house
+https://tinytreats.itch.io/pretty-park
+
+Slime Rabbit: https://assetstore.unity.com/packages/3d/characters/slime-rabbit-144436?srsltid=AfmBOor-PmItcmyW8jDyAEY_zXvNNV6__5RroKhRdE5Bqa13BeSeEveh
+Fox: https://www.cgtrader.com/free-3d-models/animal/mammal/cute-fox-70ad05fe-85d3-4aa0-87e1-c542c2c65a30
+
+Duck: https://assetstore.unity.com/packages/3d/characters/animals/lovely-animals-pack-92629
+
+Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-cloudy-crown-60004
+
+icons: https://cainos.itch.io/pixel-art-icon-pack-rpg
+
+https://kaylousberg.itch.io/restaurant-bits
+https://kaylousberg.itch.io/furniture-bits
+
+
+[Audio]
+https://opengameart.org/content/pleasant-creek
+https://opengameart.org/content/50-cc0-retro-synth-sfx
