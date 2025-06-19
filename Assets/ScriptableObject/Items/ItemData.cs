@@ -14,5 +14,6 @@ public class ItemData : ScriptableObject
     public GameObject inGameObject;
     public string itemName;
     public ItemType itemType;
-    public bool isCraftable; 
+    public bool isCraftable;
+    public bool hasSlime;
 }

@@ -41,6 +41,7 @@ public class Guest : MonoBehaviour
     public event Action FirstChoiceSatisfaction;
     public event Action SecondChoiceSatisfaction;
     public event Action IncorrectChoiceSatysfaction;
+    public event Action BeholdItHasSlimeInIt;
 
     private void Awake()
     {
@@ -105,8 +106,6 @@ public class Guest : MonoBehaviour
 
         if (secondChoiceImage != null && secondChoice != null)
             secondChoiceImage.sprite = secondChoice.iconPrefab;
-
-        print(firstChoice + " "+  secondChoice);
     }
 
     public void ReceiveItem(ItemData receivedItem)
@@ -135,6 +134,10 @@ public class Guest : MonoBehaviour
         {
             IncorrectChoiceSatysfaction?.Invoke();
             ReactToIncorrectItem(receivedItem);
+        }
+        if (receivedItem.hasSlime)
+        {
+            BeholdItHasSlimeInIt?.Invoke();
         }
 
         StartCoroutine(LeaveAfterRecivingOrder());

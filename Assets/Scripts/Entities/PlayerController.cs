@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Transform weaponPoint;
     [SerializeField] private float attackRange = 1f;
+    [SerializeField] private int maxHealth = 5;
     private int health = 5;
     private LayerMask enemyLayer;
 
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     public event Action CanGiveOrder;
     public event Action LeftOrderTrigger;
+    public event Action LoseHeart;
+    public event Action RestoreHearts;
 
     void Start()
     {
@@ -205,7 +208,6 @@ public class PlayerController : MonoBehaviour
             CanGiveOrder?.Invoke();
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("FightArena"))
@@ -217,7 +219,8 @@ public class PlayerController : MonoBehaviour
             }
             playerWeapon.SetActive(false);
             tray.SetActive(true);
-            health = 5;
+            health = maxHealth;
+            RestoreHearts?.Invoke();
         }
 
         if (other.CompareTag("NPC"))
@@ -226,11 +229,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void TakeDamage()
     {
         if (health > 0)
         {
             health -= 1;
+            LoseHeart?.Invoke();
         }
 
         if (health == 0)
@@ -243,5 +257,8 @@ public class PlayerController : MonoBehaviour
     {
         respawn = respawnPoint.transform.position;
         gameObject.transform.position = respawn;
+        health = maxHealth;
+        RestoreHearts?.Invoke();
     }
+
 }

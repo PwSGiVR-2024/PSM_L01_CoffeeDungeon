@@ -18,13 +18,16 @@ public class SatisfactionManager : MonoBehaviour
     private readonly int happy = 100;
     private readonly int neutral = 50;
     private readonly int disappointed = -50;
+    private readonly int slimeBonus = 50;
     private readonly Dictionary<Guest, System.Action> firstChoiceHandlers = new();
     private readonly Dictionary<Guest, System.Action> secondChoiceHandlers = new();
     private readonly Dictionary<Guest, System.Action> incorrectChoiceHandlers = new();
+    private readonly Dictionary<Guest, System.Action> slimeHandlers = new();
     private SatisfactionLevel satisfactionLevel;
 
     [Header("References")]
     [SerializeField] private Image satisfactionIcon;
+    [SerializeField] private GameObject endRunCanvas;
 
     [Header("Sprites")]
     [SerializeField] private Sprite happySprite;
@@ -54,14 +57,17 @@ public class SatisfactionManager : MonoBehaviour
         void firstHandler() => AddSatisfaction(happy);
         void secondHandler() => AddSatisfaction(neutral);
         void incorrectHandler() => AddSatisfaction(disappointed);
+        void slimeHandler() => AddSatisfaction(slimeBonus);
 
         guest.FirstChoiceSatisfaction += firstHandler;
         guest.SecondChoiceSatisfaction += secondHandler;
         guest.IncorrectChoiceSatysfaction += incorrectHandler;
+        guest.BeholdItHasSlimeInIt += slimeHandler;
 
         firstChoiceHandlers[guest] = firstHandler;
         secondChoiceHandlers[guest] = secondHandler;
         incorrectChoiceHandlers[guest] = incorrectHandler;
+        slimeHandlers[guest] = slimeHandler;
     }
 
     public void UnregisterGuest(Guest guest)
@@ -84,6 +90,11 @@ public class SatisfactionManager : MonoBehaviour
         {
             guest.IncorrectChoiceSatysfaction -= incorrect;
             incorrectChoiceHandlers.Remove(guest);
+        }
+        if (slimeHandlers.TryGetValue(guest, out var slime))
+        {
+            guest.BeholdItHasSlimeInIt -= slime;
+            slimeHandlers.Remove(guest);
         }
     }
 
@@ -116,6 +127,11 @@ public class SatisfactionManager : MonoBehaviour
             satisfactionLevel = SatisfactionLevel.neutral;
             satisfactionIcon.sprite = neutralSprite;
         }
+    }
+
+    public void OnClickEndRun()
+    {
+        endRunCanvas.SetActive(true);
     }
 
 }

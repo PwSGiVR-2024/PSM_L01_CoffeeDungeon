@@ -17,3 +17,4 @@ MonoBehaviour:
   itemName: Tea With Slime
   itemType: 1
   isCraftable: 1
+  hasSlime: 1

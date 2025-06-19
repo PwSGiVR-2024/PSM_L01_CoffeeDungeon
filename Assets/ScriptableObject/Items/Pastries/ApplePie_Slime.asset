@@ -17,3 +17,4 @@ MonoBehaviour:
   itemName: Apple Pie With Slime
   itemType: 0
   isCraftable: 1
+  hasSlime: 1
