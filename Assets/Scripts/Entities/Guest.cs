@@ -146,7 +146,6 @@ public class Guest : MonoBehaviour
 
     private void ReactToFirstChoiceItem(ItemData item)
     {
-        print("happy c:");
         if (audioSource != null && satisfactionSound != null)
         {
             audioSource.PlayOneShot(satisfactionSound);
@@ -162,7 +161,6 @@ public class Guest : MonoBehaviour
 
     private void ReactToSecondChoiceItem(ItemData item)
     {
-        print("not so happy but not bad c:");
         if (audioSource != null && neutralSound != null)
         {
             audioSource.PlayOneShot(neutralSound);
@@ -176,7 +174,6 @@ public class Guest : MonoBehaviour
 
     private void ReactToIncorrectItem(ItemData item)
     {
-        print("not happy :<");
         if (audioSource != null && disappointmentSound != null)
         {
             audioSource.PlayOneShot(disappointmentSound);

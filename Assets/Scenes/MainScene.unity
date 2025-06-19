@@ -6983,8 +6983,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1028838610}
-        m_TargetAssemblyTypeName: ButtonsManager, Assembly-CSharp
+      - m_Target: {fileID: 1028838612}
+        m_TargetAssemblyTypeName: MainSceneButtons, Assembly-CSharp
         m_MethodName: OnClickEndRun
         m_Mode: 1
         m_Arguments:
@@ -7043,6 +7043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1028838611}
   - component: {fileID: 1028838610}
+  - component: {fileID: 1028838612}
   m_Layer: 0
   m_Name: ButtonsManager
   m_TagString: Untagged
@@ -7062,7 +7063,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e42339c1e49a443a123a3e1ced2dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endRunCanvas: {fileID: 1780939783}
 --- !u!4 &1028838611
 Transform:
   m_ObjectHideFlags: 0
@@ -7078,6 +7078,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1028838612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028838609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49d742d04efb324ea452ae34750cdbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endRunCanvas: {fileID: 1780939783}
 --- !u!1 &1043297671
 GameObject:
   m_ObjectHideFlags: 0
@@ -7512,8 +7525,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1028838610}
-        m_TargetAssemblyTypeName: ButtonsManager, Assembly-CSharp
+      - m_Target: {fileID: 1028838612}
+        m_TargetAssemblyTypeName: MainSceneButtons, Assembly-CSharp
         m_MethodName: OnClickGoToEndRunScene
         m_Mode: 1
         m_Arguments:
@@ -14332,8 +14345,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1028838610}
-        m_TargetAssemblyTypeName: ButtonsManager, Assembly-CSharp
+      - m_Target: {fileID: 1028838612}
+        m_TargetAssemblyTypeName: MainSceneButtons, Assembly-CSharp
         m_MethodName: OnClickReturnToGame
         m_Mode: 1
         m_Arguments:
