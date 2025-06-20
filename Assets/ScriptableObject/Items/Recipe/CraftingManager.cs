@@ -33,7 +33,6 @@ public class CraftingManager : MonoBehaviour
     {
         if (!CanCraft(recipe))
         {
-            Debug.Log("Cannot craft: missing ingredients.");
             return;
         }
 

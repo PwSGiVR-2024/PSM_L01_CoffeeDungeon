@@ -16989,7 +16989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb193be99d2aafd4d8877a501fdea1e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.589044
+      value: 14.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb193be99d2aafd4d8877a501fdea1e6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18610,7 +18610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11ea3e02a05035409cee6cd528b0721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 2
+  attackRange: 1
   maxHealth: 5
   interactionRange: 2
   guestLayer:
@@ -24316,7 +24316,7 @@ Transform:
   m_GameObject: {fileID: 1600962125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 11.622069, y: 24.8228, z: -35.33542}
+  m_LocalPosition: {x: 10.85, y: 24.8228, z: -35.33542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

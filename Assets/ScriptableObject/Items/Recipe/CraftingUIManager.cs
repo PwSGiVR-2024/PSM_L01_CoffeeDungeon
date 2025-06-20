@@ -6,12 +6,43 @@ public class CraftingUIManager : MonoBehaviour
     [SerializeField] private GameObject canCraftSlot;
     [SerializeField] private GameObject missingIngredientsSlot;
     [SerializeField] private Transform slotParent;
-    [SerializeField] private RecipeList recipeList; 
+    [SerializeField] private RecipeList recipeList;
 
     private void Start()
     {
         LoadUIRecipeSlots();
+
+        if (CraftingManager.Instance != null && CraftingManager.Instance.inventory != null)
+        {
+            CraftingManager.Instance.inventory.OnInventoryChanged += RefreshRecipeSlots;
+            CraftingManager.Instance.inventory.AmountChanged += RefreshRecipeSlots;
+        }
     }
+
+    private void OnDestroy()
+    {
+        if (CraftingManager.Instance != null && CraftingManager.Instance.inventory != null)
+        {
+            CraftingManager.Instance.inventory.OnInventoryChanged -= RefreshRecipeSlots;
+            CraftingManager.Instance.inventory.AmountChanged -= RefreshRecipeSlots;
+        }
+    }
+
+    private void RefreshRecipeSlots()
+    {
+        ClearAllSlots();
+
+        LoadUIRecipeSlots();
+    }
+
+    private void ClearAllSlots()
+    {
+        foreach (Transform child in slotParent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     private void LoadUIRecipeSlots()
     {
         foreach (var recipe in recipeList.recipes)
